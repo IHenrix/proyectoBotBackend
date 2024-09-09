@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteIndividual" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dedf877e-add2-47b5-b2ec-df03fb364e12">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="fechaDocumento" class="java.lang.String"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="unidadU" class="java.lang.String"/>
+	<parameter name="zona" class="java.lang.String"/>
+	<parameter name="datosReporte" class="pe.gob.sunarp.marcaciones.app.model.DatosReporte"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="regimen" class="java.lang.String"/>
+	<field name="modalidad" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora_inicio_presencial" class="java.lang.String"/>
+	<field name="hora_fin_presencial" class="java.lang.String"/>
+	<field name="horas_en_remoto" class="java.lang.String"/>
+	<field name="horas_totales_trabajadas" class="java.lang.String"/>
+	<field name="estado_ht" class="java.lang.String"/>
+	<field name="hora_inicio_refrigerio" class="java.lang.String"/>
+	<field name="hora_fin_refrigerio" class="java.lang.String"/>
+	<field name="estado_refrigerio" class="java.lang.String"/>
+	<field name="horas_extras" class="java.lang.String"/>
+	<field name="estado_he" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="199" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle" isUsingCache="true" onErrorType="Blank">
+				<reportElement x="260" y="-1" width="239" height="50" uuid="9e0c2022-3d91-4dce-896c-92a0f18f07c1"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="288" y="60" width="183" height="19" uuid="d24f2213-ad3a-41e0-8709-7916151cb5dc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE MARCACIÓN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="240" y="169" width="60" height="30" backcolor="#CFE2F3" uuid="17adc434-a519-4e13-9c82-230e3464384b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="750" y="169" width="51" height="30" backcolor="#CFE2F3" uuid="fa2e343a-3f58-498b-abb6-9d538235b4a7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="710" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="0d6fc419-40ac-4034-92f3-c1a293601d89"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="160" y="169" width="80" height="30" backcolor="#CFE2F3" uuid="43b4b46d-f77a-480c-91e2-66d495ea4123"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="875b6a8d-ea2f-4fc5-b8ac-549659f7789e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="40" y="169" width="120" height="30" backcolor="#CFE2F3" uuid="005ada93-711f-45bc-aa24-35b2eafe53f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="169" width="50" height="30" backcolor="#CFE2F3" uuid="80097d6f-806d-454f-a3b6-58d68c899196">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="169" width="40" height="30" backcolor="#D7F9FC" uuid="251e0d3a-296b-4635-9ad0-666ae6ab04b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="169" width="120" height="30" uuid="3cf3a165-24b7-4c17-9ba0-bc4b9bf3e13f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="169" width="80" height="30" uuid="3d1b8e85-93bb-4963-a6c7-bfe4334399a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Régimen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="169" width="60" height="30" uuid="28ae7a1a-f152-4031-8fc1-4d84aa4118fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modalidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="169" width="50" height="30" uuid="186015cc-c366-4b8d-b579-f22bcaf8e1da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="390" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="4f5cbd7a-9cee-4e47-b109-b91fc34030a5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="390" y="169" width="40" height="30" uuid="ed7f6ce2-d48c-44dd-86da-b98795964f24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Fin Presencial]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="350" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="5fa04b8b-e761-47be-b643-046f3435eb77"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="350" y="169" width="40" height="30" uuid="8dddfb1d-c3fb-4b6b-b1de-392e971c82e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Inicio Presencial]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="654" y="169" width="56" height="30" backcolor="#CFE2F3" uuid="dcf551f0-001c-44a0-ba08-1fcf7923cccc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="710" y="169" width="40" height="30" uuid="16a49bc7-af5b-42dc-a050-2379e7baa68a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas Extras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="659" y="169" width="46" height="30" uuid="405391ac-7447-4c7b-93ee-519bf1a971d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Refrigerio]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="610" y="169" width="44" height="30" backcolor="#CFE2F3" uuid="9de5c261-6fce-4dba-aa18-0cef079e4e38"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="566" y="169" width="44" height="30" backcolor="#CFE2F3" uuid="6790a9de-ef51-431f-a3ee-b69e2dd261aa"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="610" y="169" width="44" height="30" uuid="641593e0-73a8-431b-b8de-49fe80deba98"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Fin Refrigerio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="566" y="169" width="44" height="30" uuid="a340c2dc-9048-478a-a7d2-7b2d336ca737"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Inicio Refrigerio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="750" y="169" width="51" height="30" uuid="fb3915a1-ed0a-438e-a1f9-d99fb117dff7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado H.E]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="510" y="169" width="56" height="30" backcolor="#CFE2F3" uuid="33f1dbc7-a203-4e49-9f28-913e5790d29f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="510" y="169" width="56" height="30" uuid="4af99268-3931-4ec6-88e0-9ffd34ca9c3c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado H.T]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="470" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="e6e7c08a-60fb-4c2d-863a-5dfd9ec3029f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="430" y="169" width="40" height="30" backcolor="#CFE2F3" uuid="9df43346-9960-4074-950d-57302932a59d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="430" y="169" width="40" height="30" uuid="70121aa0-8024-4e0d-b5b1-4e8bad7db749"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas en Remoto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="104" width="60" height="14" uuid="fe2a0f9a-226a-41df-8daf-ef68f75a8f18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Generado por: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="118" width="60" height="14" uuid="26086fe4-4987-438f-8434-308d78a827f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidad Orgánica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="132" width="110" height="14" uuid="baee916d-3af7-48f0-b07c-10066d2f7962"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina / Sede / Zona Registral:]]></text>
+			</staticText>
+			<textField pattern="hh:mm a">
+				<reportElement x="105" y="132" width="178" height="14" uuid="38125c60-c5b6-43fe-9f08-d4df45936416"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="104" width="228" height="14" uuid="0309fbc2-e031-4b95-bb59-76f75e797590"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="118" width="228" height="14" uuid="45f64f9a-8f7b-47d9-9820-eb9ef1d4ce2a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{unidadU}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="146" width="120" height="14" uuid="f4ba41b9-db23-4667-9dfa-e1dcb3d77095"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de generación del reporte:]]></text>
+			</staticText>
+			<textField pattern="hh:mm a">
+				<reportElement x="112" y="146" width="168" height="14" uuid="23aa5ec7-b141-4b47-a54d-b8304d2e23c3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="81" width="242" height="14" uuid="821adb37-a8af-46c7-ace4-b84a35a5f22f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="470" y="169" width="40" height="30" uuid="4bfae6b1-22f1-4c8b-b0d8-c3ffaa16643d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas T. Trabajas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-1" width="30" height="14" uuid="a5845dc4-db38-49fa-8151-7643136edfb4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Página :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="24" y="0" width="15" height="12" uuid="e7812f97-a368-4e32-a576-537418dadac2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + " / "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement positionType="FixRelativeToBottom" x="39" y="0" width="21" height="12" uuid="330dfae9-90a1-42b3-b76b-7d71a0fa115d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="40" height="23" uuid="b29da1f2-de32-4a0c-91f9-127a856e915f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="40" y="0" width="120" height="23" uuid="a8a22b3d-5011-4446-bccc-66bbb6f00df2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="160" y="0" width="80" height="23" uuid="0c4e617a-847a-497f-a31d-bfce8ee57041"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="240" y="0" width="60" height="23" uuid="699efe3d-56d2-4559-978a-fbb835f16feb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="0" width="50" height="23" uuid="6d07523d-e14d-4ffe-a2e6-892f72ab310e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="710" y="0" width="40" height="23" uuid="580b18b7-f6cd-4f85-ae91-d6f09e7fe9e5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="750" y="0" width="51" height="23" uuid="9b93d8c4-eb81-4265-baef-62dfe6960cf4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="40" height="23" uuid="a787fead-c20e-42c2-90aa-e66e6ced84d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="80" height="23" uuid="a5a01594-e9b8-443e-ad4b-0e7129a80229"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{regimen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="60" height="23" uuid="91115fd5-2848-41ee-93dc-0d2ac883382c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="50" height="23" uuid="8b3d8805-e6e4-4359-9d2d-7b202b94dc16">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="390" y="0" width="40" height="23" uuid="60ef9774-7cab-4971-b1ed-06b70551199a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="350" y="0" width="40" height="23" uuid="6887eebd-83a8-432f-af54-9c97e015d592"/>
+			</rectangle>
+			<textField>
+				<reportElement x="350" y="0" width="40" height="23" uuid="fb608384-463b-4bd0-ad5b-8b7515e5655c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_inicio_presencial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="0" width="120" height="23" uuid="afe3587d-8ca7-4659-b338-43ab9ad2a142"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="610" y="0" width="44" height="23" uuid="8ba18405-f45a-489a-b1e4-3e54a5c9fb09"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="566" y="0" width="44" height="23" uuid="6995561c-e8ef-4831-b846-34c9ec1f5e79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="654" y="0" width="56" height="23" uuid="1fd68255-a7e0-4533-b4f0-9153cfac1421"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="510" y="0" width="56" height="23" uuid="46fe23e8-428f-4c06-914c-030d1ea41abd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="470" y="0" width="40" height="23" uuid="b1d41196-9405-444f-927a-a518f227b532"/>
+			</rectangle>
+			<textField>
+				<reportElement x="510" y="0" width="56" height="23" uuid="673d5b52-3252-4abb-b71f-dbc45b25269c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_ht}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="0" width="44" height="23" uuid="d669d508-1c66-4d16-a15e-497b7725917c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_fin_refrigerio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="40" height="23" uuid="e83413a6-f58c-4f58-a1c4-0b03747eb2c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_fin_presencial}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="430" y="0" width="40" height="23" uuid="1b6c2ab9-5667-49bb-a260-aee0558ae723"/>
+			</rectangle>
+			<textField>
+				<reportElement x="470" y="0" width="40" height="23" uuid="6269abd7-c459-4a96-b1d1-d22830842f38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horas_totales_trabajadas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="40" height="23" uuid="069bf363-c96b-44c8-851d-d3296cfa3a1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horas_en_remoto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="750" y="0" width="51" height="23" uuid="d7650fe0-1922-48ae-8b76-11d1cf9ea4f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_he}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="710" y="0" width="40" height="23" uuid="947ffafa-8103-41a5-9e09-108db39e9814"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horas_extras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="654" y="0" width="56" height="23" uuid="49e86c2e-6216-4df4-9a28-589cea90700e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_refrigerio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="566" y="0" width="44" height="23" uuid="360fe49d-ff81-4982-873f-1d33605e2022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_inicio_refrigerio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="41" splitType="Stretch"/>
+	</summary>
+</jasperReport>
