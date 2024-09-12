@@ -46,9 +46,15 @@ INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_ADMIN', 'ADMINISTRADOR');
 
 INSERT INTO usuario (username, password, enabled) VALUES ('75911772', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
 INSERT INTO usuario (username, password, enabled) VALUES ('72274736', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('75249647', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('75911773', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
 
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (1, 1);
-INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 1);
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 2);
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (3, 3);
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (4, 1);
+
+
 INSERT INTO persona (
     nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
 ) 
@@ -61,6 +67,20 @@ INSERT INTO persona (
 VALUES (
     'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', '2019104010', 'Ingeniería de Computación y Sistemas', 'gracia.marcag@gmail.com', '913256561', 2
 );
+
+INSERT INTO persona (
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+) 
+VALUES (
+    'ALEXANDRA STEFANNY', 'PALOMINO', 'RUIZ', 'F', '2019110010', 'Ingeniería de Computación y Sistemas', 'apolominorg@gmail.com', '913256561', 3
+);
+INSERT INTO persona (
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+) 
+VALUES (
+    'ROBERT D JESÚS', 'PAREDES', 'GARCIA', 'M', '2020104010', 'Ingeniería de Computación y Sistemas', 'generico@gmail.com', '913256561', 4
+);
+
 CREATE TABLE tipo_archivo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL
@@ -70,28 +90,9 @@ INSERT INTO tipo_archivo (nombre) VALUES ('GUÍA');
 CREATE TABLE archivo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
-    documento BLOB NOT NULL,
+    documento LONGBLOB NOT NULL,
     descripcion VARCHAR(255) NULL,
     tipo VARCHAR(255) NULL,
 	id_tipo_archivo INT NOT NULL,
     FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
 );
-
-
--- SCRIPTS
-SELECT 
-    *
-FROM 
-    persona a
-JOIN 
-    usuario u ON a.id_usuario = u.id
-WHERE 
-    u.username = '75911772';
-
-SELECT p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, 
-p.telefono, p.carrera 
-FROM persona p 
-INNER JOIN usuario u ON p.id_usuario = u.id 
-WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id);
-
-

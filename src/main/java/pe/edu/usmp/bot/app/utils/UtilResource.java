@@ -1,5 +1,7 @@
 package pe.edu.usmp.bot.app.utils;
 
+import java.util.Optional;
+
 public class UtilResource {
 
     public static String validNullString(String data) {
@@ -15,5 +17,12 @@ public class UtilResource {
         } else {
             return dato.trim().length();
         }
+    }
+
+    public static String obtenerExtensionArchivo(String nombreArchivo) {
+        return Optional.ofNullable(nombreArchivo)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(nombreArchivo.lastIndexOf(".") + 1))
+                .orElse("desconocido");
     }
 }

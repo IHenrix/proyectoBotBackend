@@ -22,14 +22,15 @@ public class ArchivoServiceImpl implements ArchivoService {
         ListModelResponse<ArchivoResponse> resp= new ListModelResponse<>();
         List<ArchivoResponse> lista= repo.listarArchivos(datos);
         if(!lista.isEmpty()){
-            resp.setIcon(Constantes.ICON_INFO);;
-            resp.setMensaje("No se han encontrado archivos");
+            resp.setCod(Constantes.SUCCESS_COD);
+            resp.setIcon(Constantes.ICON_SUCCESS);
+            resp.setMensaje("Se ha encontrado GUIAS");
+            resp.setList(lista);
         }
         else{
-            resp.setCod(Constantes.SUCCESS_COD);
-            resp.setIcon(Constantes.ICON_SUCCESS);;
-            resp.setMensaje("Se han encontrado archivos");
-            resp.setList(lista);
+            resp.setCod(Constantes.NULL_COD);
+            resp.setIcon(Constantes.ICON_INFO);;
+            resp.setMensaje("No se han encontrado GUIAS");
         }
         return resp;
     }

@@ -24,14 +24,15 @@ public class AdminServiceImpl implements AdminService {
         ListModelResponse<PersonaResponse> resp= new ListModelResponse<>();
         List<PersonaResponse> lista= repo.listarUsuarios(datos);
         if(!lista.isEmpty()){
-            resp.setIcon(Constantes.ICON_INFO);;
-            resp.setMensaje("No se han encontrado usuarios");
-        }
-        else{
             resp.setCod(Constantes.SUCCESS_COD);
-            resp.setIcon(Constantes.ICON_SUCCESS);;
+            resp.setIcon(Constantes.ICON_SUCCESS);
             resp.setMensaje("Se ha encontrado usuarios");
             resp.setList(lista);
+        }
+        else{
+            resp.setCod(Constantes.NULL_COD);
+            resp.setIcon(Constantes.ICON_INFO);;
+            resp.setMensaje("No se han encontrado usuarios");
         }
         return resp;
     }

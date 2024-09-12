@@ -1,18 +1,18 @@
 package pe.edu.usmp.bot.app.request;
 
 public class CreaModiArchivoRequest {
-    private int id;
+    private Long id;
     private String nombre;
     private byte[] documento;
     private String descripcion;
     private String tipo;
-    private int idTipoArchivo;
+    private Long idTipoArchivo;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,11 +48,11 @@ public class CreaModiArchivoRequest {
         this.tipo = tipo;
     }
 
-    public int getIdTipoArchivo() {
+    public Long getIdTipoArchivo() {
         return idTipoArchivo;
     }
 
-    public void setIdTipoArchivo(int idTipoArchivo) {
+    public void setIdTipoArchivo(Long idTipoArchivo) {
         this.idTipoArchivo = idTipoArchivo;
     }
 }

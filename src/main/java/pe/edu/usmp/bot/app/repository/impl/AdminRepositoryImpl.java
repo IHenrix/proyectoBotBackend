@@ -34,7 +34,7 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 
     @Override
     public List<PersonaResponse> listarUsuarios(ListarUsuarioRequest datos) {
-        StringBuilder sql = new StringBuilder("SELECT p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, p.carrera " +
+        StringBuilder sql = new StringBuilder("SELECT u.username as usuario, p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, p.carrera " +
                 "FROM persona p INNER JOIN usuario u ON p.id_usuario = u.id WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id)");
 
         List<Object> params = new ArrayList<>();

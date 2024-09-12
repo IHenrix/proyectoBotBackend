@@ -2,6 +2,7 @@ package pe.edu.usmp.bot.app.response;
 
 public class PersonaResponse {
     private Long id;
+    private String usuario;
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
@@ -13,6 +14,14 @@ public class PersonaResponse {
 
     public Long getId() {
         return id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public void setId(Long id) {
