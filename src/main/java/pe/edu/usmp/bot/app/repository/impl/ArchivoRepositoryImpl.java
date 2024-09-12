@@ -85,4 +85,14 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
         String sql = "DELETE FROM archivo WHERE id = ?";
         jdbcTemplate.update(sql, idArchivo);
     }
+
+    @Override
+    public byte[] obtenerDocumento(Long idArchivo) {
+        try {
+            String sql = "SELECT documento FROM archivo WHERE id = ?";
+            return jdbcTemplate.queryForObject(sql, new Object[]{idArchivo}, byte[].class);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
 }

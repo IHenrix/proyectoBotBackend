@@ -1,6 +1,8 @@
 package pe.edu.usmp.bot.app.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.usmp.bot.app.request.CreaModiArchivoRequest;
 import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
@@ -60,6 +62,11 @@ public class AdminController {
     @RequestMapping(value = "eliminarArchivo", method = RequestMethod.POST)
     MsgResponse eliminarArchivo(@RequestParam Long idArchivo){
         return seArchivo.eliminarArchivo(idArchivo);
+    }
+
+    @RequestMapping(value = "obtenerDocumento", method = RequestMethod.POST)
+    public ResponseEntity<String> obtenerDocumento(@RequestParam Long idArchivo){
+       return obtenerDocumento(idArchivo);
     }
 
 }

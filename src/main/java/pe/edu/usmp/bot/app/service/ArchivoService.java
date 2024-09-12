@@ -18,4 +18,6 @@ public interface ArchivoService {
     MsgResponse editarArchivo(CreaModiArchivoRequest datos);
 
     MsgResponse eliminarArchivo(Long idArchivo);
+
+    ModelResponse<byte[]> obtenerDocumento(Long idArchivo);
 }

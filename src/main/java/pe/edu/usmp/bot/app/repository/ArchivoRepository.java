@@ -17,4 +17,6 @@ public interface ArchivoRepository {
     void editarArchivo(CreaModiArchivoRequest datos);
 
     void eliminarArchivo(Long idArchivo);
+
+    byte[] obtenerDocumento(Long idArchivo);
 }

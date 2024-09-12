@@ -80,4 +80,20 @@ public class ArchivoServiceImpl implements ArchivoService {
         resp.setMensaje("Se ha eliminado el archivo sastifactoriamente");
         return resp;
     }
+
+    @Override
+    public ModelResponse<byte[]> obtenerDocumento(Long idArchivo) {
+        ModelResponse<byte[]> resp = new ModelResponse<>();
+        byte[] model= repo.obtenerDocumento(idArchivo);
+        if (model != null) {
+            resp.setCod(Constantes.SUCCESS_COD);
+            resp.setIcon(Constantes.ICON_SUCCESS);;
+            resp.setMensaje("Se ha encontrado documento");
+            resp.setModel(model);
+        }
+        else{
+            resp.setMensaje("No se ha encontrado documento");
+        }
+        return resp;
+    }
 }
