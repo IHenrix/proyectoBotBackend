@@ -4,5 +4,9 @@ import pe.edu.usmp.bot.app.response.MsgResponse;
 
 public interface AdminService {
 
-    public MsgResponse crearUsuario(CreaModiUsuarioRequest datos);
+    MsgResponse crearUsuario(CreaModiUsuarioRequest datos);
+
+    MsgResponse editarUsuario(CreaModiUsuarioRequest datos);
+
+
 }

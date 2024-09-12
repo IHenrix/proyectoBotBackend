@@ -4,6 +4,9 @@ import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
 
 public interface AdminRepository {
 
-    public void crearUsuario(CreaModiUsuarioRequest datos);
+    void crearUsuario(CreaModiUsuarioRequest datos);
 
+    void editarUsuario(CreaModiUsuarioRequest datos);
+
+    boolean esUsernameUsado(String username);
 }

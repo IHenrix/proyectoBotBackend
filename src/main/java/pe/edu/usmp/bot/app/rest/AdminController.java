@@ -20,4 +20,10 @@ public class AdminController {
     public MsgResponse crearUsuario(@RequestBody CreaModiUsuarioRequest datos) {
         return se.crearUsuario(datos);
     }
+    @RequestMapping(value = "editarUsuario", method = RequestMethod.POST)
+    public MsgResponse editarUsuario(@RequestBody CreaModiUsuarioRequest datos){
+        return se.editarUsuario(datos);
+    }
+
+
 }

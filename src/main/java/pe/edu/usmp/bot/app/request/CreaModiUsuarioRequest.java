@@ -3,6 +3,7 @@ package pe.edu.usmp.bot.app.request;
 import java.util.List;
 
 public class CreaModiUsuarioRequest {
+    private String id;
     private String usuario;
     private String password;
     private String nombre;
@@ -14,6 +15,14 @@ public class CreaModiUsuarioRequest {
     private String telefono;
     private String carrera;
     private List<CreaModiRolRequest> roles;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsuario() {
         return usuario;
