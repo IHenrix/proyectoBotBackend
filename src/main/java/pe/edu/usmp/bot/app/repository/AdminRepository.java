@@ -9,6 +9,8 @@ public interface AdminRepository {
 
     List<PersonaResponse> listarUsuarios(ListarUsuarioRequest datos);
 
+    PersonaResponse buscarPersona(Long idPersona);
+
     void crearUsuario(CreaModiUsuarioRequest datos);
 
     void editarUsuario(CreaModiUsuarioRequest datos);

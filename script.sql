@@ -61,8 +61,24 @@ INSERT INTO persona (
 VALUES (
     'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', '2019104010', 'Ingeniería de Computación y Sistemas', 'gracia.marcag@gmail.com', '913256561', 2
 );
+CREATE TABLE tipo_archivo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+);
+INSERT INTO tipo_archivo (nombre) VALUES ('GUÍA');
+
+CREATE TABLE archivo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    documento BLOB NOT NULL,
+    descripcion VARCHAR(255) NULL,
+    tipo VARCHAR(255) NULL,
+	id_tipo_archivo INT NOT NULL,
+    FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
+);
 
 
+-- SCRIPTS
 SELECT 
     *
 FROM 
@@ -72,6 +88,10 @@ JOIN
 WHERE 
     u.username = '75911772';
 
-SELECT * FROM usuario;
+SELECT p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, 
+p.telefono, p.carrera 
+FROM persona p 
+INNER JOIN usuario u ON p.id_usuario = u.id 
+WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id);
 
 

@@ -1,14 +1,23 @@
 package pe.edu.usmp.bot.app.response;
 
 public class PersonaResponse {
+    private Long id;
     private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
+    private String apellido_paterno;
+    private String apellido_materno;
     private String sexo;
     private String codigo;
     private String email;
     private String telefono;
     private String carrera;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -18,20 +27,20 @@ public class PersonaResponse {
         this.nombre = nombre;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+    public String getApellido_paterno() {
+        return apellido_paterno;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setApellido_paterno(String apellido_paterno) {
+        this.apellido_paterno = apellido_paterno;
     }
 
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
+    public String getApellido_materno() {
+        return apellido_materno;
     }
 
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApellido_materno(String apellido_materno) {
+        this.apellido_materno = apellido_materno;
     }
 
     public String getSexo() {
