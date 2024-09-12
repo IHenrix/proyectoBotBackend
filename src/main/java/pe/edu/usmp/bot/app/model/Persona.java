@@ -1,13 +1,13 @@
 package pe.edu.usmp.bot.app.model;
 
 
-public class Alumno {
+public class Persona {
 	private Long id;
 	private String nombre;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private String sexo;
-	private String codigoAlumno;
+	private String codigo;
 	private String email;
 	private String telefono;
 	private String carrera;
@@ -41,12 +41,8 @@ public class Alumno {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getCodigoAlumno() {
-		return codigoAlumno;
-	}
-	public void setCodigoAlumno(String codigoAlumno) {
-		this.codigoAlumno = codigoAlumno;
-	}
+	public String getCodigo() {return codigo;}
+	public void setCodigo(String codigo) {this.codigo = codigo;}
 	public String getEmail() {
 		return email;
 	}

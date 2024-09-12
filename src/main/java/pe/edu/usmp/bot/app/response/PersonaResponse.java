@@ -1,11 +1,6 @@
-package pe.edu.usmp.bot.app.request;
+package pe.edu.usmp.bot.app.response;
 
-import java.util.List;
-
-public class CreaModiUsuarioRequest {
-    private String id;
-    private String usuario;
-    private String password;
+public class PersonaResponse {
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -14,31 +9,6 @@ public class CreaModiUsuarioRequest {
     private String email;
     private String telefono;
     private String carrera;
-    private List<CreaModiRolRequest> roles;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getNombre() {
         return nombre;
@@ -102,13 +72,5 @@ public class CreaModiUsuarioRequest {
 
     public void setCarrera(String carrera) {
         this.carrera = carrera;
-    }
-
-    public List<CreaModiRolRequest> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<CreaModiRolRequest> roles) {
-        this.roles = roles;
     }
 }

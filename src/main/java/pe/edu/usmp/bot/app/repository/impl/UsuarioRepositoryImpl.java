@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Repository;
 
-import pe.edu.usmp.bot.app.model.Alumno;
+import pe.edu.usmp.bot.app.model.Persona;
 import pe.edu.usmp.bot.app.model.Rol;
 import pe.edu.usmp.bot.app.model.Usuario;
 import pe.edu.usmp.bot.app.repository.UsuarioRepository;
@@ -71,24 +71,24 @@ public class UsuarioRepositoryImpl extends JdbcDaoSupport implements UsuarioRepo
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public Alumno findAlumnoByUsername(String username) {
-		String sql = "SELECT a.* FROM alumno a " + "JOIN usuario u ON a.id_usuario = u.id " + "WHERE u.username = ?";
+	public Persona buscarPersonaBPorUsername(String username) {
+		String sql = "SELECT a.* FROM persona a " + "JOIN usuario u ON a.id_usuario = u.id " + "WHERE u.username = ?";
 
-		return jdbcTemplate.queryForObject(sql, new Object[] { username }, this::mapAlumno);
+		return jdbcTemplate.queryForObject(sql, new Object[] { username }, this::mapPersona);
 	}
 
-	private Alumno mapAlumno(ResultSet rs, int rowNum) throws SQLException {
-		Alumno alumno = new Alumno();
-		alumno.setId(rs.getLong("id"));
-		alumno.setNombre(rs.getString("nombre"));
-		alumno.setApellidoPaterno(rs.getString("apellido_paterno"));
-		alumno.setApellidoMaterno(rs.getString("apellido_materno"));
-		alumno.setSexo(rs.getString("sexo"));
-		alumno.setCodigoAlumno(rs.getString("codigo_alumno"));
-		alumno.setEmail(rs.getString("email"));
-		alumno.setTelefono(rs.getString("telefono"));
-		alumno.setCarrera(rs.getString("carrera"));
-		return alumno;
+	private Persona mapPersona(ResultSet rs, int rowNum) throws SQLException {
+		Persona persona = new Persona();
+		persona.setId(rs.getLong("id"));
+		persona.setNombre(rs.getString("nombre"));
+		persona.setApellidoPaterno(rs.getString("apellido_paterno"));
+		persona.setApellidoMaterno(rs.getString("apellido_materno"));
+		persona.setSexo(rs.getString("sexo"));
+		persona.setCodigo(rs.getString("codigo"));
+		persona.setEmail(rs.getString("email"));
+		persona.setTelefono(rs.getString("telefono"));
+		persona.setCarrera(rs.getString("carrera"));
+		return persona;
 	}
 
 }
