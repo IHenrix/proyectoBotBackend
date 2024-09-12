@@ -1,0 +1,105 @@
+package pe.edu.usmp.bot.app.request;
+
+import java.util.List;
+
+public class CreaModiUsuarioRequest {
+    private String usuario;
+    private String password;
+    private String nombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String sexo;
+    private String codigoAlumno;
+    private String email;
+    private String telefono;
+    private String carrera;
+    private List<CreaModiRolRequest> roles;
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getCodigoAlumno() {
+        return codigoAlumno;
+    }
+
+    public void setCodigoAlumno(String codigoAlumno) {
+        this.codigoAlumno = codigoAlumno;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public List<CreaModiRolRequest> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<CreaModiRolRequest> roles) {
+        this.roles = roles;
+    }
+}
