@@ -1,3 +1,4 @@
+
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -42,7 +43,7 @@ INSERT INTO usuario (username, password, enabled) VALUES ('75911772', '$2a$10$1u
 INSERT INTO usuario (username, password, enabled) VALUES ('72274736', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
 
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (1, 1);
-
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 1);
 INSERT INTO alumno (
     nombre, apellido_paterno, apellido_materno, sexo, codigo_alumno, carrera, email, telefono, id_usuario
 ) 
