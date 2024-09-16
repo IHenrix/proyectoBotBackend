@@ -13,6 +13,7 @@ import pe.edu.usmp.bot.app.repository.AdminRepository;
 import pe.edu.usmp.bot.app.request.CreaModiRolRequest;
 import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
 import pe.edu.usmp.bot.app.request.ListarUsuarioRequest;
+import pe.edu.usmp.bot.app.response.CodNombreResponse;
 import pe.edu.usmp.bot.app.response.PersonaResponse;
 
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 
     @Override
     public List<PersonaResponse> listarUsuarios(ListarUsuarioRequest datos) {
-        StringBuilder sql = new StringBuilder("SELECT u.username as usuario, p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, p.carrera " +
-                "FROM persona p INNER JOIN usuario u ON p.id_usuario = u.id WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id)");
+        StringBuilder sql = new StringBuilder("SELECT u.username as usuario, p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, c.nombre as carrera " +
+                "FROM persona p INNER JOIN usuario u ON p.id_usuario = u.id INNER JOIN carrera c ON p.id_carrera = c.id   WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id)");
 
         List<Object> params = new ArrayList<>();
 
@@ -79,11 +80,11 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
         jdbcTemplate.update(sqlUsuario, datos.getUsuario(), datos.getPassword(), true);
         Long usuarioId = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class);
 
-        String sqlPersona = "INSERT INTO persona (nombre, apellido_paterno, apellido_materno, sexo, codigo, email, telefono, carrera, id_usuario) " +
+        String sqlPersona = "INSERT INTO persona (nombre, apellido_paterno, apellido_materno, sexo, codigo, email, telefono, id_carrera, id_usuario) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sqlPersona, datos.getNombre(), datos.getApellidoPaterno(), datos.getApellidoMaterno(),
                 datos.getSexo(), datos.getCodigo(), datos.getEmail(), datos.getTelefono(),
-                datos.getCarrera(), usuarioId);
+                datos.getIdCarrera(), usuarioId);
 
         // Insertar roles en la tabla `usuario_rol`
         String sqlUsuarioRol = "INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (?, ?)";
@@ -101,7 +102,7 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
                 "codigo= ?, email = ?, telefono = ?, carrera = ? WHERE id_usuario = ?";
         jdbcTemplate.update(sqlUpdateAlumno, datos.getNombre(), datos.getApellidoPaterno(),
                 datos.getApellidoMaterno(), datos.getSexo(), datos.getCodigo(),
-                datos.getEmail(), datos.getTelefono(), datos.getCarrera(), Long.parseLong(datos.getId()));
+                datos.getEmail(), datos.getTelefono(), datos.getIdCarrera(), Long.parseLong(datos.getId()));
 
         String sqlDeleteRoles = "DELETE FROM usuario_rol WHERE usuario_id = ?";
         jdbcTemplate.update(sqlDeleteRoles, Long.parseLong(datos.getId()));
@@ -142,5 +143,9 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
         jdbcTemplate.update(sqlDeleteUsuario, usuarioId);
     }
 
+    @Override
+    public List<CodNombreResponse> listaCarrera() {
+        return jdbcTemplate.query("select a.id as cod,a.nombre from carrera a", BeanPropertyRowMapper.newInstance(CodNombreResponse.class));
+    }
 
 }

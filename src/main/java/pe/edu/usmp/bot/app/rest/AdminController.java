@@ -13,6 +13,8 @@ import pe.edu.usmp.bot.app.service.AdminService;
 import pe.edu.usmp.bot.app.service.ArchivoService;
 import pe.edu.usmp.bot.app.utils.UtilResource;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -82,5 +84,8 @@ public class AdminController {
 	public ModelResponse<byte[]> obtenerDocumento(@RequestParam Long idArchivo) {
 		return seArchivo.obtenerDocumento(idArchivo);
 	}
-
+	@RequestMapping(value = "listaCarrera", method = RequestMethod.GET)
+	public List<CodNombreResponse> listaCarrera(){
+		return se.listaCarrera();
+	}
 }

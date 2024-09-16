@@ -25,7 +25,11 @@ CREATE TABLE usuario_rol (
     FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
-
+CREATE TABLE carrera (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    enabled BOOLEAN DEFAULT TRUE
+);
 CREATE TABLE persona (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -35,9 +39,11 @@ CREATE TABLE persona (
     codigo VARCHAR(255) NOT NULL,
     email VARCHAR(255),
     telefono VARCHAR(255),
-    carrera VARCHAR(250),
+    id_carrera INT,
     id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+	FOREIGN KEY (id_carrera) REFERENCES carrera(id)
+
 );
 
 INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_USER', 'ALUMNO');
@@ -54,31 +60,33 @@ INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 2);
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (3, 3);
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (4, 1);
 
+INSERT INTO carrera (nombre) VALUES ('Ingeniería de Computación y Sistemas');
+INSERT INTO carrera (nombre) VALUES ('Ingeniería de Software');
 
 INSERT INTO persona (
-    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'RICARDO ENRIQUE', 'PRADA', 'GUERRA', 'M', '2024141514', 'Ingeniería de Software', 'enrique.pdg@gmail.com', '912016161', 1
+    'RICARDO ENRIQUE', 'PRADA', 'GUERRA', 'M', '2024141514', 2, 'enrique.pdg@gmail.com', '912016161', 1
 );
 INSERT INTO persona (
-    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', '2019104010', 'Ingeniería de Computación y Sistemas', 'gracia.marcag@gmail.com', '913256561', 2
+    'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', '2019104010', 1, 'gracia.marcag@gmail.com', '913256561', 2
 );
 
 INSERT INTO persona (
-    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'ALEXANDRA STEFANNY', 'PALOMINO', 'RUIZ', 'F', '2019110010', 'Ingeniería de Computación y Sistemas', 'apolominorg@gmail.com', '913256561', 3
+    'ALEXANDRA STEFANNY', 'PALOMINO', 'RUIZ', 'F', '2019110010', 1, 'apolominorg@gmail.com', '913256561', 3
 );
 INSERT INTO persona (
-    nombre, apellido_paterno, apellido_materno, sexo, codigo, carrera, email, telefono, id_usuario
+    nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'ROBERT D JESÚS', 'PAREDES', 'GARCIA', 'M', '2020104010', 'Ingeniería de Computación y Sistemas', 'generico@gmail.com', '913256561', 4
+    'ROBERT D JESÚS', 'PAREDES', 'GARCIA', 'M', '2020104010', 1, 'generico@gmail.com', '913256561', 4
 );
 
 CREATE TABLE tipo_archivo (
@@ -98,3 +106,4 @@ CREATE TABLE archivo (
 	fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
 );
+

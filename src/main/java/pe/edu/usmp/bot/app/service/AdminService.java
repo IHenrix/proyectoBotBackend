@@ -3,6 +3,8 @@ import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
 import pe.edu.usmp.bot.app.request.ListarUsuarioRequest;
 import pe.edu.usmp.bot.app.response.*;
 
+import java.util.List;
+
 public interface AdminService {
 
     ListModelResponse<PersonaResponse> listarUsuarios(ListarUsuarioRequest datos);
@@ -15,4 +17,5 @@ public interface AdminService {
 
     MsgResponse eliminarUsuario(Long usuarioId);
 
+    List<CodNombreResponse> listaCarrera();
 }

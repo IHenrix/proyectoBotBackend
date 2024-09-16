@@ -88,4 +88,9 @@ public class AdminServiceImpl implements AdminService {
         resp.setMensaje("Se ha eliminado al usuario sastifactoriamente");
         return resp;
     }
+
+    @Override
+    public List<CodNombreResponse> listaCarrera() {
+        return repo.listaCarrera();
+    }
 }

@@ -72,7 +72,7 @@ public class UsuarioRepositoryImpl extends JdbcDaoSupport implements UsuarioRepo
 	@Override
 	@SuppressWarnings("deprecation")
 	public Persona buscarPersonaBPorUsername(String username) {
-		String sql = "SELECT a.* FROM persona a " + "JOIN usuario u ON a.id_usuario = u.id " + "WHERE u.username = ?";
+		String sql = "SELECT a.*,c.nombre as carrera FROM persona a JOIN usuario u ON a.id_usuario = u.id INNER JOIN carrera c ON a.id_carrera = c.id WHERE u.username = ?";
 
 		return jdbcTemplate.queryForObject(sql, new Object[] { username }, this::mapPersona);
 	}
