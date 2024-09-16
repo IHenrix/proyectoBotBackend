@@ -3,6 +3,7 @@ package pe.edu.usmp.bot.app.response;
 public class ArchivoResponse {
     private int id;
     private String nombre;
+    private String nombre_archivo;
     private String descripcion;
     private String tipo;
     private int id_tipo_archivo;
@@ -21,6 +22,14 @@ public class ArchivoResponse {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombre_archivo() {
+        return nombre_archivo;
+    }
+
+    public void setNombre_archivo(String nombre_archivo) {
+        this.nombre_archivo = nombre_archivo;
     }
 
     public String getDescripcion() {

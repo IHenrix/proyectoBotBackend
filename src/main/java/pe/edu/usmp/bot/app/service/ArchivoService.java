@@ -10,7 +10,7 @@ import pe.edu.usmp.bot.app.response.MsgResponse;
 
 public interface ArchivoService {
 
-	CreaModiArchivoRequest guardarDatosArchivo(Boolean edit,String nombre, String descripcion, Long idTipoArchivo,
+	CreaModiArchivoRequest guardarDatosArchivo(Boolean edit,Long id,String nombre, String descripcion, Long idTipoArchivo,
 			MultipartFile archivo);
 
 	ListModelResponse<ArchivoResponse> listarArchivos(ListarArchivosRequest datos);

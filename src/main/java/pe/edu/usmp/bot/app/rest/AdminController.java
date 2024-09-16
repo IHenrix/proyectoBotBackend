@@ -63,14 +63,14 @@ public class AdminController {
 			@RequestParam("descripcion") String descripcion, @RequestParam("idTipoArchivo") Long idTipoArchivo,
 			@RequestParam("archivo") MultipartFile archivo) {
 
-		return seArchivo.crearArchivo(seArchivo.guardarDatosArchivo(nombre, descripcion, idTipoArchivo, archivo));
+		return seArchivo.crearArchivo(seArchivo.guardarDatosArchivo(false,null,nombre, descripcion, idTipoArchivo, archivo));
 	}
 
 	@RequestMapping(value = "editarArchivo", method = RequestMethod.POST, consumes = { "multipart/form-data" })
 	public MsgResponse editarArchivo(@RequestParam("id") Long id,
 			@RequestParam("nombre") String nombre, @RequestParam("descripcion") String descripcion,
-			@RequestParam("idTipoArchivo") Long idTipoArchivo, @RequestParam("archivo") MultipartFile archivo) {
-		return seArchivo.editarArchivo(seArchivo.guardarDatosArchivo(nombre, descripcion, idTipoArchivo, archivo));
+			@RequestParam("idTipoArchivo") Long idTipoArchivo, @RequestParam(value = "archivo", required = false) MultipartFile archivo) {
+		return seArchivo.editarArchivo(seArchivo.guardarDatosArchivo(true,id,nombre, descripcion, idTipoArchivo, archivo));
 	}
 
 	@RequestMapping(value = "eliminarArchivo", method = RequestMethod.GET)

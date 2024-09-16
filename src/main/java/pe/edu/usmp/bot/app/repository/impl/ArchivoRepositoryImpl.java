@@ -44,7 +44,7 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
     @Override
     public ArchivoResponse buscarArchivo(Long idArchivo) {
         try {
-            String sql = "SELECT id,nombre,descripcion,tipo,id_tipo_archivo FROM archivo WHERE id = ?";
+            String sql = "SELECT id,nombre,nombre_archivo,descripcion,tipo,id_tipo_archivo FROM archivo WHERE id = ?";
             return jdbcTemplate.queryForObject(sql, new Object[]{idArchivo}, BeanPropertyRowMapper.newInstance(ArchivoResponse.class));
         } catch (EmptyResultDataAccessException e) {
             return null;
@@ -70,17 +70,31 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
 
     @Override
     public void editarArchivo(CreaModiArchivoRequest archivo) {
-        String sql = "UPDATE archivo SET nombre = ?, documento = ?, descripcion = ?, tipo = ?, id_tipo_archivo = ? WHERE id = ?";
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, archivo.getNombre());
-            ps.setBytes(2, archivo.getDocumento()); // Campo BLOB
-            ps.setString(3, archivo.getDescripcion());
-            ps.setString(4, archivo.getTipo());
-            ps.setLong(5, archivo.getIdTipoArchivo());
-            ps.setLong(6, archivo.getId());
-            return ps;
-        });
+       if(archivo.getDocumento()!=null) {
+           String sql = "UPDATE archivo SET nombre = ?,nombre_archivo = ?, documento = ?, descripcion = ?, tipo = ?, id_tipo_archivo = ? WHERE id = ?";
+           jdbcTemplate.update(connection -> {
+               PreparedStatement ps = connection.prepareStatement(sql);
+               ps.setString(1, archivo.getNombre());
+               ps.setString(2, archivo.getNombreArchivo());
+               ps.setBytes(3, archivo.getDocumento()); // Campo BLOB
+               ps.setString(4, archivo.getDescripcion());
+               ps.setString(5, archivo.getTipo());
+               ps.setLong(6, archivo.getIdTipoArchivo());
+               ps.setLong(7, archivo.getId());
+               return ps;
+           });
+       }
+       else{
+           String sql = "UPDATE archivo SET nombre = ? , descripcion = ?, id_tipo_archivo = ? WHERE id = ?";
+           jdbcTemplate.update(connection -> {
+               PreparedStatement ps = connection.prepareStatement(sql);
+               ps.setString(1, archivo.getNombre());
+               ps.setString(2, archivo.getDescripcion());
+               ps.setLong(3, archivo.getIdTipoArchivo());
+               ps.setLong(4, archivo.getId());
+               return ps;
+           });
+       }
     }
     @Override
     public void eliminarArchivo(Long idArchivo) {

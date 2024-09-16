@@ -21,7 +21,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 	private ArchivoRepository repo;
 
 	@Override
-	public CreaModiArchivoRequest guardarDatosArchivo(Boolean edit,String nombre, String descripcion, Long idTipoArchivo,
+	public CreaModiArchivoRequest guardarDatosArchivo(Boolean edit,Long id,String nombre, String descripcion, Long idTipoArchivo,
 			MultipartFile archivo) {
 
 		String nombreArchivo = "";
@@ -33,9 +33,10 @@ public class ArchivoServiceImpl implements ArchivoService {
 			nombreArchivo = archivo.getOriginalFilename();
 			extension = UtilResource.obtenerExtensionArchivo(archivo.getOriginalFilename());
 		} catch (Exception e) {
-			throw new RuntimeException("Error al procesar el archivo", e);
+			if(!edit){
+				throw new RuntimeException("Error al procesar el archivo", e);
+			}
 		}
-
 
 		CreaModiArchivoRequest datos = new CreaModiArchivoRequest();
 		datos.setNombre(nombre);
@@ -44,7 +45,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		datos.setIdTipoArchivo(idTipoArchivo);
 		datos.setDocumento(documento);
 		datos.setNombreArchivo(nombreArchivo);
-
+		datos.setId(id);
 		return datos;
 	}
 
@@ -88,7 +89,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		repo.crearArchivo(datos);
 		resp.setCod(Constantes.SUCCESS_COD);
 		resp.setIcon(Constantes.ICON_SUCCESS);
-		resp.setMensaje("Se ha registrado el archivo sastifactoriamente");
+		resp.setMensaje("Se ha guardado el archivo sastifactoriamente");
 		return resp;
 	}
 
@@ -98,9 +99,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		repo.editarArchivo(datos);
 		resp.setCod(Constantes.SUCCESS_COD);
 		resp.setIcon(Constantes.ICON_SUCCESS);
-		;
 		resp.setMensaje("Se ha modificado el archivo sastifactoriamente");
-
 		return resp;
 	}
 
