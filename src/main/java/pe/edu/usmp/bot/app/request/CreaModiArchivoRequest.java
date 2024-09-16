@@ -7,6 +7,7 @@ public class CreaModiArchivoRequest {
     private String descripcion;
     private String tipo;
     private Long idTipoArchivo;
+    private String nombreArchivo;
 
     public Long getId() {
         return id;
@@ -55,4 +56,13 @@ public class CreaModiArchivoRequest {
     public void setIdTipoArchivo(Long idTipoArchivo) {
         this.idTipoArchivo = idTipoArchivo;
     }
+
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
+    
 }

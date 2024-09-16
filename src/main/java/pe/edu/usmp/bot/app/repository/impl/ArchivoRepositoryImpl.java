@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@SuppressWarnings("deprecation")
 public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepository {
     @Autowired
     private ApplicationContext context;
@@ -27,8 +28,7 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
         setDataSource(setDataSource);
         this.jdbcTemplate = context.getBean("db_desa", JdbcTemplate.class);
     }
-
-    @Override
+	@Override
     public List<ArchivoResponse> listarArchivos(ListarArchivosRequest datos) {
         StringBuilder sql = new StringBuilder("SELECT id,nombre,descripcion,tipo,id_tipo_archivo FROM archivo WHERE 1=1");
         List<Object> params = new ArrayList<>();
@@ -37,6 +37,7 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
             sql.append(" AND id_tipo_archivo = ?");
             params.add(datos.getIdTipoArchivo());
         }
+        sql.append(" ORDER BY fecha_creacion ASC");
         return jdbcTemplate.query(sql.toString(), params.toArray(), BeanPropertyRowMapper.newInstance(ArchivoResponse.class));
     }
 
@@ -53,15 +54,16 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
 
     @Override
     public void crearArchivo(CreaModiArchivoRequest datos) {
-        String sql = "INSERT INTO archivo (nombre, documento, descripcion, tipo, id_tipo_archivo) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO archivo (nombre,nombre_archivo, documento, descripcion, tipo, id_tipo_archivo) VALUES (?, ?, ?, ?, ?,?)";
 
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, datos.getNombre());
-            ps.setBytes(2, datos.getDocumento());
-            ps.setString(3, datos.getDescripcion());
-            ps.setString(4, datos.getTipo());
-            ps.setLong(5, datos.getIdTipoArchivo());
+            ps.setString(2, datos.getNombreArchivo());
+            ps.setBytes(3, datos.getDocumento());
+            ps.setString(4, datos.getDescripcion());
+            ps.setString(5, datos.getTipo());
+            ps.setLong(6, datos.getIdTipoArchivo());
             return ps;
         });
     }

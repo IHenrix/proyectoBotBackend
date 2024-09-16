@@ -90,9 +90,11 @@ INSERT INTO tipo_archivo (nombre) VALUES ('GUÍA');
 CREATE TABLE archivo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
+    nombre_archivo TEXT NOT NULL,
     documento LONGBLOB NOT NULL,
     descripcion VARCHAR(255) NULL,
     tipo VARCHAR(255) NULL,
 	id_tipo_archivo INT NOT NULL,
+	fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
 );

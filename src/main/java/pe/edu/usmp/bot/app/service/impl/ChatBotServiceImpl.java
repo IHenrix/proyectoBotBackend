@@ -51,7 +51,7 @@ public class ChatBotServiceImpl implements ChatBotService {
 			headers.set("Authorization", "Bearer " + openaiApiKey);
 
 			String requestBody = "{" +
-					   "\"model\": \"gpt-3.5-turbo\"," +
+					   "\"model\": \"gpt-4o-mini\"," +
 					   "\"messages\": [{" +
 					   "\"role\": \"system\", \"content\": \""+openaiApiUrlContent+".\"}," +
 					   "{\"role\": \"user\", \"content\": \"" + datos.getMensaje() + "\"}]," +
