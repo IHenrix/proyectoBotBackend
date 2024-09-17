@@ -37,7 +37,7 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 	@Override
 	public List<PersonaResponse> listarUsuarios(ListarUsuarioRequest datos) {
 		StringBuilder sql = new StringBuilder(
-				"SELECT u.username as usuario, p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, c.nombre as carrera "
+				"SELECT u.username as usuario,u.id as usuario_id, p.id, p.nombre, p.apellido_paterno, p.apellido_materno, p.sexo, p.codigo, p.email, p.telefono, c.nombre as carrera "
 						+ "FROM persona p INNER JOIN usuario u ON p.id_usuario = u.id INNER JOIN carrera c ON p.id_carrera = c.id   WHERE EXISTS (SELECT 1 FROM usuario_rol ur WHERE ur.usuario_id = u.id)");
 
 		List<Object> params = new ArrayList<>();
@@ -108,6 +108,7 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 			String hashedPassword = passwordEncoder.encode(datos.getPassword());
 			String sqlUpdateUsuarioPass = "UPDATE usuario SET username = ?, password = ? WHERE id = ?";
 			jdbcTemplate.update(sqlUpdateUsuarioPass, datos.getUsuario(), hashedPassword,datos.getUsuario_id());
+			System.out.println("Se actualiza la contraseña");
 		} else {
 			String sqlUpdateUsuarioNoPass = "UPDATE usuario SET username = ?  WHERE id = ?";
 			jdbcTemplate.update(sqlUpdateUsuarioNoPass, datos.getUsuario(),datos.getUsuario_id());

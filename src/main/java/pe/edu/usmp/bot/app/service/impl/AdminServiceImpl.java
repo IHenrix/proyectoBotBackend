@@ -4,7 +4,6 @@ package pe.edu.usmp.bot.app.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.usmp.bot.app.repository.AdminRepository;
-import pe.edu.usmp.bot.app.request.CreaModiRolRequest;
 import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
 import pe.edu.usmp.bot.app.request.ListarUsuarioRequest;
 import pe.edu.usmp.bot.app.response.*;
@@ -66,7 +65,7 @@ public class AdminServiceImpl implements AdminService {
             repo.crearUsuario(datos);
             resp.setCod(Constantes.SUCCESS_COD);
             resp.setIcon(Constantes.ICON_SUCCESS);;
-            resp.setMensaje("Se ha registrado al usuario sastifactoriamente");
+            resp.setMensaje("Se ha registrado al usuario satifactoriamente");
         }
         return resp;
     }
@@ -82,7 +81,7 @@ public class AdminServiceImpl implements AdminService {
             repo.editarUsuario(datos);
             resp.setCod(Constantes.SUCCESS_COD);
             resp.setIcon(Constantes.ICON_SUCCESS);;
-            resp.setMensaje("Se ha modificado al usuario sastifactoriamente");
+            resp.setMensaje("Se ha modificado al usuario satifactoriamente");
         }
         return resp;
     }
@@ -93,7 +92,7 @@ public class AdminServiceImpl implements AdminService {
         repo.eliminarUsuario(usuarioId);
         resp.setCod(Constantes.SUCCESS_COD);
         resp.setIcon(Constantes.ICON_INFO);;
-        resp.setMensaje("Se ha eliminado al usuario sastifactoriamente");
+        resp.setMensaje("Se ha eliminado al usuario satifactoriamente");
         return resp;
     }
 

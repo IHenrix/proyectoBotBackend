@@ -45,8 +45,8 @@ public class AdminController {
 		return se.editarUsuario(datos);
 	}
 
-	@RequestMapping(value = "eliminarUsuario", method = RequestMethod.POST)
-	public MsgResponse eliminarUsuario(@RequestParam Long usuarioId) {
+	@RequestMapping(value = "eliminarUsuario/{usuarioId}", method = RequestMethod.POST)
+	public MsgResponse eliminarUsuario(@PathVariable Long usuarioId) {
 		return se.eliminarUsuario(usuarioId);
 	}
 

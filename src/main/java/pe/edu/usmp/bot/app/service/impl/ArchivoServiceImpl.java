@@ -89,7 +89,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		repo.crearArchivo(datos);
 		resp.setCod(Constantes.SUCCESS_COD);
 		resp.setIcon(Constantes.ICON_SUCCESS);
-		resp.setMensaje("Se ha guardado el archivo sastifactoriamente");
+		resp.setMensaje("Se ha subido la guía satifactoriamente");
 		return resp;
 	}
 
@@ -99,7 +99,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		repo.editarArchivo(datos);
 		resp.setCod(Constantes.SUCCESS_COD);
 		resp.setIcon(Constantes.ICON_SUCCESS);
-		resp.setMensaje("Se ha modificado el archivo sastifactoriamente");
+		resp.setMensaje("Se ha modificado la guía satifactoriamente");
 		return resp;
 	}
 
@@ -110,7 +110,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		resp.setCod(Constantes.SUCCESS_COD);
 		resp.setIcon(Constantes.ICON_INFO);
 		;
-		resp.setMensaje("Se ha eliminado el archivo sastifactoriamente");
+		resp.setMensaje("Se ha eliminado la guía satifactoriamente");
 		return resp;
 	}
 
