@@ -47,8 +47,7 @@ CREATE TABLE persona (
 );
 
 INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_USER', 'ALUMNO');
-INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_DOCENTE', 'DOCENTE');
-INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_ADMIN', 'ADMINISTRADOR');
+INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_DOCENTE', 'DOCENTE/ADMINISTRADOR');
 
 INSERT INTO usuario (username, password, enabled) VALUES ('75911772', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
 INSERT INTO usuario (username, password, enabled) VALUES ('72274736', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
@@ -57,7 +56,7 @@ INSERT INTO usuario (username, password, enabled) VALUES ('75911773', '$2a$10$1u
 
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (1, 1);
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 2);
-INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (3, 3);
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (3, 2);
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (4, 1);
 
 INSERT INTO carrera (nombre) VALUES ('Ingeniería de Computación y Sistemas');
@@ -106,4 +105,3 @@ CREATE TABLE archivo (
 	fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
 );
-

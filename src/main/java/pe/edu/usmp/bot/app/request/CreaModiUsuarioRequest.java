@@ -14,17 +14,19 @@ public class CreaModiUsuarioRequest {
     private String email;
     private String telefono;
     private Long idCarrera;
+    private Long usuario_id;
     private List<CreaModiRolRequest> roles;
 
+    
     public String getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getUsuario() {
+	public String getUsuario() {
         return usuario;
     }
 
@@ -103,8 +105,16 @@ public class CreaModiUsuarioRequest {
     public void setIdCarrera(Long idCarrera) {
         this.idCarrera = idCarrera;
     }
+    
+    public Long getUsuario_id() {
+		return usuario_id;
+	}
 
-    public List<CreaModiRolRequest> getRoles() {
+	public void setUsuario_id(Long usuario_id) {
+		this.usuario_id = usuario_id;
+	}
+
+	public List<CreaModiRolRequest> getRoles() {
         return roles;
     }
 

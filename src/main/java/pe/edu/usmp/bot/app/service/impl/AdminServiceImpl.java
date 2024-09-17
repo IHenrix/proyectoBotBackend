@@ -45,6 +45,7 @@ public class AdminServiceImpl implements AdminService {
             resp.setCod(Constantes.SUCCESS_COD);
             resp.setIcon(Constantes.ICON_SUCCESS);;
             resp.setMensaje("Se ha encontrado al usuario");
+            model.setRoles(repo.listarRoles(model.getUsuario_id()));
             resp.setModel(model);
         }
         else{
@@ -56,17 +57,24 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public MsgResponse crearUsuario(CreaModiUsuarioRequest datos) {
         MsgResponse resp = new MsgResponse();
-        repo.crearUsuario(datos);
-        resp.setCod(Constantes.SUCCESS_COD);
-        resp.setIcon(Constantes.ICON_SUCCESS);;
-        resp.setMensaje("Se ha registrado al usuario sastifactoriamente");
+        
+        if(repo.esUsernameUsado(datos.getUsuario(),datos.getUsuario_id())){
+            resp.setIcon(Constantes.ICON_INFO);;
+            resp.setMensaje("El usuario "+datos.getUsuario()+" ya existe");
+        }
+        else {
+            repo.crearUsuario(datos);
+            resp.setCod(Constantes.SUCCESS_COD);
+            resp.setIcon(Constantes.ICON_SUCCESS);;
+            resp.setMensaje("Se ha registrado al usuario sastifactoriamente");
+        }
         return resp;
     }
 
     @Override
     public MsgResponse editarUsuario(CreaModiUsuarioRequest datos) {
         MsgResponse resp = new MsgResponse();
-        if(repo.esUsernameUsado(datos.getUsuario())){
+        if(repo.esUsernameUsado(datos.getUsuario(),datos.getUsuario_id())){
             resp.setIcon(Constantes.ICON_INFO);;
             resp.setMensaje("El usuario "+datos.getUsuario()+" ya existe");
         }

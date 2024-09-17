@@ -1,8 +1,11 @@
 package pe.edu.usmp.bot.app.response;
 
+import java.util.List;
+
 public class PersonaResponse {
     private Long id;
     private String usuario;
+    private Long usuario_id;
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
@@ -11,7 +14,9 @@ public class PersonaResponse {
     private String email;
     private String telefono;
     private String carrera;
-
+    private Long id_Carrera;
+    private List<RolesResponse> roles;
+    
     public Long getId() {
         return id;
     }
@@ -20,7 +25,15 @@ public class PersonaResponse {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public Long getUsuario_id() {
+		return usuario_id;
+	}
+
+	public void setUsuario_id(Long usuario_id) {
+		this.usuario_id = usuario_id;
+	}
+
+	public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
@@ -91,4 +104,21 @@ public class PersonaResponse {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
+
+	public Long getId_Carrera() {
+		return id_Carrera;
+	}
+
+	public void setId_Carrera(Long id_Carrera) {
+		this.id_Carrera = id_Carrera;
+	}
+
+	public List<RolesResponse> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RolesResponse> roles) {
+		this.roles = roles;
+	}
+    
 }
