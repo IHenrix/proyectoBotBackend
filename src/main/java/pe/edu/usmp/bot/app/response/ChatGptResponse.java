@@ -1,7 +1,9 @@
 package pe.edu.usmp.bot.app.response;
 
 import java.util.List;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos a nivel de clase principal
 public class ChatGptResponse {
     private String id;
     private String object;
@@ -11,7 +13,7 @@ public class ChatGptResponse {
     private Usage usage;
     private String system_fingerprint;
 
-    // Getters and Setters
+    // Getters y Setters
     public String getId() {
         return id;
     }
@@ -68,13 +70,46 @@ public class ChatGptResponse {
         this.system_fingerprint = system_fingerprint;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos en la clase Usage
+    public static class Usage {
+        private int prompt_tokens;
+        private int completion_tokens;
+        private int total_tokens;
+
+        // Getters y Setters
+        public int getPrompt_tokens() {
+            return prompt_tokens;
+        }
+
+        public void setPrompt_tokens(int prompt_tokens) {
+            this.prompt_tokens = prompt_tokens;
+        }
+
+        public int getCompletion_tokens() {
+            return completion_tokens;
+        }
+
+        public void setCompletion_tokens(int completion_tokens) {
+            this.completion_tokens = completion_tokens;
+        }
+
+        public int getTotal_tokens() {
+            return total_tokens;
+        }
+
+        public void setTotal_tokens(int total_tokens) {
+            this.total_tokens = total_tokens;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos en la clase Choice
     public static class Choice {
         private int index;
         private MessageResponse message;
         private String logprobs;
         private String finish_reason;
 
-        // Getters and Setters
+        // Getters y Setters
         public int getIndex() {
             return index;
         }
@@ -105,37 +140,6 @@ public class ChatGptResponse {
 
         public void setFinish_reason(String finish_reason) {
             this.finish_reason = finish_reason;
-        }
-    }
-
-    public static class Usage {
-        private int prompt_tokens;
-        private int completion_tokens;
-        private int total_tokens;
-
-        // Getters and Setters
-        public int getPrompt_tokens() {
-            return prompt_tokens;
-        }
-
-        public void setPrompt_tokens(int prompt_tokens) {
-            this.prompt_tokens = prompt_tokens;
-        }
-
-        public int getCompletion_tokens() {
-            return completion_tokens;
-        }
-
-        public void setCompletion_tokens(int completion_tokens) {
-            this.completion_tokens = completion_tokens;
-        }
-
-        public int getTotal_tokens() {
-            return total_tokens;
-        }
-
-        public void setTotal_tokens(int total_tokens) {
-            this.total_tokens = total_tokens;
         }
     }
 }

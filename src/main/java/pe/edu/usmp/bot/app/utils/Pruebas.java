@@ -1,9 +1,12 @@
 package pe.edu.usmp.bot.app.utils;
 import java.text.DecimalFormat;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pe.edu.usmp.bot.app.service.ChatBotService;
 
 public class Pruebas {
+
 
 	public static void main(String[] args) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import pe.edu.usmp.bot.app.repository.ArchivoRepository;
 import pe.edu.usmp.bot.app.request.CreaModiArchivoRequest;
 import pe.edu.usmp.bot.app.request.ListarArchivosRequest;
+import pe.edu.usmp.bot.app.response.ArchivoDocumentoResponse;
 import pe.edu.usmp.bot.app.response.ArchivoResponse;
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
@@ -110,5 +111,19 @@ public class ArchivoRepositoryImpl extends JdbcDaoSupport implements ArchivoRepo
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
+    }
+
+    @Override
+    public List<ArchivoDocumentoResponse> listarArchivoDocumento() {
+        String sql = "SELECT id,nombre,nombre_archivo,descripcion,tipo,id_tipo_archivo FROM archivo";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+            ArchivoDocumentoResponse archivo = new ArchivoDocumentoResponse();
+            archivo.setId(rs.getInt("id"));
+            archivo.setNombre(rs.getString("nombre"));
+            archivo.setNombre_archivo(rs.getString("nombre_archivo"));
+            archivo.setDescripcion(rs.getString("descripcion"));
+            archivo.setTipo(rs.getString("tipo"));
+            return archivo;
+        });
     }
 }

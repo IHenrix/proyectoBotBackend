@@ -37,7 +37,7 @@ dependencies {
 	//implementation group: 'com.google.zxing', name: 'core', version: '2.0'
 	//implementation group: 'com.google.zxing', name: 'javase', version: '3.3.0'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
-	
+	implementation 'org.apache.pdfbox:pdfbox:2.0.27'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' // Exclude embedded Tomcat Server
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//LIBRERIAS NECESARIAS PARA GENERAR PDF

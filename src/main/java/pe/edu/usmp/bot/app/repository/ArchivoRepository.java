@@ -2,6 +2,7 @@ package pe.edu.usmp.bot.app.repository;
 
 import pe.edu.usmp.bot.app.request.CreaModiArchivoRequest;
 import pe.edu.usmp.bot.app.request.ListarArchivosRequest;
+import pe.edu.usmp.bot.app.response.ArchivoDocumentoResponse;
 import pe.edu.usmp.bot.app.response.ArchivoResponse;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface ArchivoRepository {
     void eliminarArchivo(Long idArchivo);
 
     byte[] obtenerDocumento(Long idArchivo);
+
+    List<ArchivoDocumentoResponse> listarArchivoDocumento();
 }

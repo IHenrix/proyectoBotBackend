@@ -4,6 +4,8 @@ public class EnviarMensajeRequest {
 	
 	private String mensaje;
 
+	private String prompt;
+
 	public String getMensaje() {
 		return mensaje;
 	}
@@ -12,4 +14,11 @@ public class EnviarMensajeRequest {
 		this.mensaje = mensaje;
 	}
 
+	public String getPrompt() {
+		return prompt;
+	}
+
+	public void setPrompt(String prompt) {
+		this.prompt = prompt;
+	}
 }
