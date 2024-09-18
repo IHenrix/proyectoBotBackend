@@ -64,10 +64,9 @@ public class ChatBotServiceImpl implements ChatBotService {
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		try {
-			// URL a la que se enviará la solicitud
 			String openaiApiUrlContentData = openaiApiUrlContent;
 			if (datos.getPrompt() != null) {
-				openaiApiUrlContentData = datos.getPrompt();
+				openaiApiUrlContentData ="Eres EPICSBot, un asistente virtual académico. "+datos.getPrompt();
 			}
 
 			// Cabeceras
@@ -78,6 +77,7 @@ public class ChatBotServiceImpl implements ChatBotService {
 			// Crear el cuerpo del JSON con ObjectMapper
 			Map<String, Object> requestBody = new HashMap<>();
 			requestBody.put("model", "gpt-4");
+			//requestBody.put("model", "gpt-3.5-turbo");
 
 			List<Map<String, String>> messages = new ArrayList<>();
 			Map<String, String> systemMessage = new HashMap<>();
@@ -93,7 +93,7 @@ public class ChatBotServiceImpl implements ChatBotService {
 
 			requestBody.put("messages", messages);
 			requestBody.put("temperature", 0.7);
-			requestBody.put("max_tokens", 150);
+			requestBody.put("max_tokens", 1000);
 			requestBody.put("top_p", 1);
 			requestBody.put("frequency_penalty", 0);
 			requestBody.put("presence_penalty", 0);
@@ -136,7 +136,7 @@ public class ChatBotServiceImpl implements ChatBotService {
 	}
 
 	@Override
-	public ModelResponse<String> enviarMensajeConArchivo(String mensaje, MultipartFile archivo) {
+	public ModelResponse<String> enviarMensajeConArchivo(EnviarMensajeRequest datos, MultipartFile archivo) {
 
 		ModelResponse<String> resp = new ModelResponse<>();
 		ChatGptResponse beanResponse = new ChatGptResponse();
@@ -165,9 +165,14 @@ public class ChatBotServiceImpl implements ChatBotService {
 				requestBody.put("frequency_penalty", 0);
 				requestBody.put("presence_penalty", 0);
 
+				String openaiApiUrlContentData = openaiApiUrlContent;
+				if (datos.getPrompt() != null) {
+					openaiApiUrlContentData ="Eres EPICSBot, un asistente virtual académico. "+datos.getPrompt();
+				}
+
 				List<Map<String, String>> messages = List.of(
-						Map.of("role", "system", "content", "Se que no analizas documentos , pero necesito que solo revises el texto extraido de este pdf"),
-						Map.of("role", "user", "content", mensaje + " Analiza " + chunk)
+						Map.of("role", "system", "content", datos.getPrompt()),
+						Map.of("role", "user", "content", datos.getMensaje() + ". Revisa esto:  " + chunk)
 				);
 				requestBody.put("messages", messages);
 
@@ -256,12 +261,13 @@ public class ChatBotServiceImpl implements ChatBotService {
 
 	public boolean analizarporGuia(ArchivoDocumentoResponse archivos,String mensaje) throws IOException {
 		EnviarMensajeRequest request = new EnviarMensajeRequest();
-		request.setPrompt("Tu objetivo es indicar si es VERDADERO o FALSO si una palabra o un tema parecido se encuentra como atributo en un objeto json");
+		request.setPrompt("Tu objetivo es indicar si es VERDADERO o FALSO si una palabra se encuentra como atributo en un objeto json (no importa si es Mayuscula o Minuscula). Tambien en caso que la palabra ingresada tenga sentido por favor indicar VERDADERO");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonGuia = objectMapper.writeValueAsString(archivos);
-		request.setMensaje("La palabra es "+mensaje+" y debes buscarla en este json "+jsonGuia);
+		request.setMensaje("La palabra o tema es "+mensaje+" y debes buscarla en este json "+jsonGuia);
 		ModelResponse<String> validar=enviarMensaje(request);
 		if(validar.getCod()==1){
+			System.out.println(validar.getModel());
 			return validar.getModel().equals("VERDADERO");
 		}
 		return false;

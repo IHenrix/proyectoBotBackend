@@ -26,8 +26,11 @@ public class ChatBotController {
 	}
 
 	@RequestMapping(value = "enviarMensajeConArchivo", method = RequestMethod.POST)
-	public ModelResponse<String> enviarMensajeConArchivo(@RequestParam("mensaje") String mensaje,@RequestParam("archivo") MultipartFile archivo){
-		return se.enviarMensajeConArchivo(mensaje,archivo);
+	public ModelResponse<String> enviarMensajeConArchivo(@RequestParam("mensaje")  String mensaje,@RequestParam("prompt") String prompt,@RequestParam("archivo") MultipartFile archivo){
+		EnviarMensajeRequest request= new EnviarMensajeRequest();
+		request.setMensaje(mensaje);
+		request.setPrompt(prompt);
+		return se.enviarMensajeConArchivo(request,archivo);
 	}
 	@RequestMapping(value = "buscarGuias", method = RequestMethod.POST)
 	public ListModelResponse<ArchivoDocumentoResponse> buscarGuias(@RequestBody EnviarMensajeRequest datos) throws IOException {

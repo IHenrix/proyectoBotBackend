@@ -36,7 +36,7 @@ CREATE TABLE persona (
     apellido_paterno VARCHAR(255) NOT NULL,
     apellido_materno VARCHAR(255) NOT NULL,
     sexo VARCHAR(1) NOT NULL,
-    codigo VARCHAR(255) NOT NULL,
+    codigo VARCHAR(255) NULL,
     email VARCHAR(255),
     telefono VARCHAR(255),
     id_carrera INT,

@@ -12,7 +12,7 @@ import java.io.IOException;
 public interface ChatBotService {
 	ModelResponse<String> enviarMensaje(EnviarMensajeRequest datos);
 
-	ModelResponse<String> enviarMensajeConArchivo(String mensaje, MultipartFile archivo);
+	ModelResponse<String> enviarMensajeConArchivo(EnviarMensajeRequest datos, MultipartFile archivo);
 
 	ListModelResponse<ArchivoDocumentoResponse> buscarGuias(EnviarMensajeRequest datos) throws IOException;
 }
