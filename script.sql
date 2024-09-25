@@ -37,10 +37,11 @@ CREATE TABLE persona (
     apellido_materno VARCHAR(255) NOT NULL,
     sexo VARCHAR(1) NOT NULL,
     codigo VARCHAR(255) NULL,
-    email VARCHAR(255),
+    email VARCHAR(255) NULL,
     telefono VARCHAR(255),
-    id_carrera INT,
-    id_usuario INT,
+	login_email BOOLEAN DEFAULT FALSE,
+    id_carrera INT NULL,
+    id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
 	FOREIGN KEY (id_carrera) REFERENCES carrera(id)
 
@@ -49,10 +50,10 @@ CREATE TABLE persona (
 INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_USER', 'ALUMNO');
 INSERT INTO rol (nombre, descripcion) VALUES ('ROLE_DOCENTE', 'DOCENTE/ADMINISTRADOR');
 
-INSERT INTO usuario (username, password, enabled) VALUES ('75911772', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
-INSERT INTO usuario (username, password, enabled) VALUES ('72274736', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
-INSERT INTO usuario (username, password, enabled) VALUES ('75249647', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
-INSERT INTO usuario (username, password, enabled) VALUES ('75911773', '$2a$10$1uPuPvL1Ps1u7/rQPuI1pe/Ra.E3wxzZoElDSe.tBald1GBQrQsfu', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('enrique_prada@usmp.pe', '$2a$10$FVgYU0sJZBnySdeRYmUEQu3m6XOZwa7B1YdsbHwqwB.mXnt9h.UJO', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('gracia_marca@usmp.pe', '$2a$10$FVgYU0sJZBnySdeRYmUEQu3m6XOZwa7B1YdsbHwqwB.mXnt9h.UJO', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('alexandra_palomino2@usmp.pe', '$2a$10$FVgYU0sJZBnySdeRYmUEQu3m6XOZwa7B1YdsbHwqwB.mXnt9h.UJO', true);
+INSERT INTO usuario (username, password, enabled) VALUES ('roberto_paredes@usmp.pe', '$2a$10$FVgYU0sJZBnySdeRYmUEQu3m6XOZwa7B1YdsbHwqwB.mXnt9h.UJO', true);
 
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (1, 1);
 INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (2, 2);
@@ -66,26 +67,26 @@ INSERT INTO persona (
     nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'RICARDO ENRIQUE', 'PRADA', 'GUERRA', 'M', '2024141514', 2, 'enrique.pdg@gmail.com', '912016161', 1
+    'RICARDO ENRIQUE', 'PRADA', 'GUERRA', 'M', '2024141514', 2, null, '912016161', 1
 );
 INSERT INTO persona (
     nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', '2019104010', 1, 'gracia.marcag@gmail.com', '913256561', 2
+    'GRACIA ANTUANETTE', 'MARCA', 'TORRES', 'F', null, 1, null, '913256561', 2
 );
 
 INSERT INTO persona (
     nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'ALEXANDRA STEFANNY', 'PALOMINO', 'RUIZ', 'F', '2019110010', 1, 'apolominorg@gmail.com', '913256561', 3
+    'ALEXANDRA STEFANNY', 'PALOMINO', 'RUIZ', 'F', null, 1, null, '913256561', 3
 );
 INSERT INTO persona (
     nombre, apellido_paterno, apellido_materno, sexo, codigo, id_carrera, email, telefono, id_usuario
 ) 
 VALUES (
-    'ROBERT D JESÚS', 'PAREDES', 'GARCIA', 'M', '2020104010', 1, 'generico@gmail.com', '913256561', 4
+    'ROBERT D JESÚS', 'PAREDES', 'GARCIA', 'M', '2020104010', 1, null, '913256561', 4
 );
 
 CREATE TABLE tipo_archivo (

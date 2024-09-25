@@ -10,7 +10,7 @@ public class Pruebas {
 
 	public static void main(String[] args) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode("123456");
+		String hashedPassword = passwordEncoder.encode("Epicsbot1234@");
 		System.out.println(hashedPassword);
 		
 		int nota = 13;
