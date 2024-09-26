@@ -25,5 +25,6 @@ public interface AdminRepository {
     List<CodNombreResponse> listaCarrera();
     
     List<RolesResponse> listarRoles(Long usuario);
-
+    
+    Long obtenerIdCarreraSiExiste(String nombreCarrera);
 }

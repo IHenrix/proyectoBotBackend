@@ -17,11 +17,13 @@ import pe.edu.usmp.bot.app.request.ListarUsuarioRequest;
 import pe.edu.usmp.bot.app.response.CodNombreResponse;
 import pe.edu.usmp.bot.app.response.PersonaResponse;
 import pe.edu.usmp.bot.app.response.RolesResponse;
+import pe.edu.usmp.bot.app.utils.UtilResource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@SuppressWarnings("deprecation")
 public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminRepository {
 
 	@Autowired
@@ -81,8 +83,10 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 
 	@Override
 	public void crearUsuario(CreaModiUsuarioRequest datos) {
+		System.out.println("Usuario: "+datos.getUsuario());
+		System.out.println("Contraseña: "+UtilResource.contrasenaVacia(datos.getPassword()));
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(datos.getPassword());
+		String hashedPassword = passwordEncoder.encode(UtilResource.contrasenaVacia(datos.getPassword()));
 		String sqlUsuario = "INSERT INTO usuario (username, password, enabled) VALUES (?, ?, ?)";
 		jdbcTemplate.update(sqlUsuario, datos.getUsuario(), hashedPassword, true);
 		Long usuarioId = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class);
@@ -173,10 +177,21 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 				BeanPropertyRowMapper.newInstance(CodNombreResponse.class));
 	}
 
+
 	@Override
 	public List<RolesResponse> listarRoles(Long usuario) {
 		return jdbcTemplate.query("SELECT rol_id as id FROM usuario_rol where usuario_id=?", new Object[] { usuario },
 				BeanPropertyRowMapper.newInstance(RolesResponse.class));
 	}
+
+	@Override
+	  public Long obtenerIdCarreraSiExiste(String nombreCarrera) {
+        String sql = "SELECT id FROM carrera WHERE nombre = ? LIMIT 1";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{nombreCarrera}, Long.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }

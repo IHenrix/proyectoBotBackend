@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pe.edu.usmp.bot.app.request.CreaModiArchivoRequest;
+import pe.edu.usmp.bot.app.request.CreaModiUsuarioMasivoRequest;
 import pe.edu.usmp.bot.app.request.CreaModiUsuarioRequest;
 import pe.edu.usmp.bot.app.request.ListarArchivosRequest;
 import pe.edu.usmp.bot.app.request.ListarUsuarioRequest;
@@ -87,5 +88,10 @@ public class AdminController {
 	@RequestMapping(value = "listaCarrera", method = RequestMethod.GET)
 	public List<CodNombreResponse> listaCarrera(){
 		return se.listaCarrera();
+	}
+	
+	@RequestMapping(value = "crearUsuariosMasivo", method = RequestMethod.POST)
+	public MsgResponse crearUsuariosMasivo(@RequestBody CreaModiUsuarioMasivoRequest datos) {
+		return se.crearUsuariosMasivo(datos);
 	}
 }

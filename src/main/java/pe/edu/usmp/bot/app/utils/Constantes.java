@@ -9,5 +9,6 @@ public class Constantes {
 	public static String ICON_ERROR = "error";
 	public static String ICON_WARNING = "warning";
 	public static String ICON_INFO = "info";
+	public static String CONTRASENA_DEFAULT = "Epicsbot1234@";
 
 }

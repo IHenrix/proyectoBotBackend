@@ -25,4 +25,12 @@ public class UtilResource {
                 .map(f -> f.substring(nombreArchivo.lastIndexOf(".") + 1))
                 .orElse("desconocido");
     }
+    
+    public static String contrasenaVacia(String contra) {
+    	if(validNullString(contra).length()>0) {
+    	   	return contra;
+    	}
+		return Constantes.CONTRASENA_DEFAULT;
+
+    }
 }

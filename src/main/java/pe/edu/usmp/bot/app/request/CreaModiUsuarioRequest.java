@@ -16,6 +16,7 @@ public class CreaModiUsuarioRequest {
     private String carrera;
     private Long idCarrera;
     private Long usuario_id;
+    private Integer fila;
     private List<CreaModiRolRequest> roles;
 
     
@@ -121,6 +122,14 @@ public class CreaModiUsuarioRequest {
 
 	public void setUsuario_id(Long usuario_id) {
 		this.usuario_id = usuario_id;
+	}
+
+	public Integer getFila() {
+		return fila;
+	}
+
+	public void setFila(Integer fila) {
+		this.fila = fila;
 	}
 
 	public List<CreaModiRolRequest> getRoles() {
