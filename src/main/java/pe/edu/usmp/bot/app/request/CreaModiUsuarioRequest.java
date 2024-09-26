@@ -13,6 +13,7 @@ public class CreaModiUsuarioRequest {
     private String codigo;
     private String email;
     private String telefono;
+    private String carrera;
     private Long idCarrera;
     private Long usuario_id;
     private List<CreaModiRolRequest> roles;
@@ -98,7 +99,15 @@ public class CreaModiUsuarioRequest {
         this.telefono = telefono;
     }
 
-    public Long getIdCarrera() {
+    public String getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
+	}
+
+	public Long getIdCarrera() {
         return idCarrera;
     }
 
