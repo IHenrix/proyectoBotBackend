@@ -20,6 +20,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
+		   /*http
+           .authorizeRequests(a -> a
+               .antMatchers("/oauth/**","/oauth2/**","/auth-microsoft-custom/**").permitAll()
+               .anyRequest().authenticated()
+           )
+           .oauth2Login()
+           .and().cors().configurationSource(corsConfigurationSource());*/
 		http.authorizeRequests().
 		antMatchers("/oauth/**").permitAll()
 		.anyRequest().authenticated()
