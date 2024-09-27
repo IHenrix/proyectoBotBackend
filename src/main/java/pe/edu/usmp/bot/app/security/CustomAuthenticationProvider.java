@@ -58,7 +58,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			throw ex;
 		}
 	}
-
 	@Override
 	public boolean supports(Class<?> authentication) {
 		return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
