@@ -17,7 +17,7 @@ repositories {
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
 }
-jar {
+/*jar {
 	enabled = true
 	manifest {
 		attributes(
@@ -25,7 +25,7 @@ jar {
 		)
 	}
 	archiveClassifier = ''
-}
+}*/
 
 
 dependencies {
