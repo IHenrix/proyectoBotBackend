@@ -1,10 +1,16 @@
 package pe.edu.usmp.bot.app.request;
 
 public class EnviarMensajeRequest {
-	
+
+	private Integer categoria;
+
 	private String mensaje;
 
 	private String prompt;
+
+	public Integer getCategoria() {return categoria;}
+
+	public void setCategoria(Integer categoria) {this.categoria = categoria;}
 
 	public String getMensaje() {
 		return mensaje;

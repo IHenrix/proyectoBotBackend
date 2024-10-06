@@ -106,3 +106,39 @@ CREATE TABLE archivo (
 	fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_tipo_archivo) REFERENCES tipo_archivo(id)
 );
+
+CREATE TABLE categoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+);
+
+INSERT INTO categoria (nombre) 
+VALUES (
+    'CONSULTA SOBRE MI PROYECTO'
+);
+
+INSERT INTO categoria (nombre) 
+VALUES (
+    'GUIÁS ACADEMICAS'
+);
+
+INSERT INTO categoria (nombre) 
+VALUES (
+    'CONSULTA DE RECURSOS BIBLIOGRÁFICOS'
+);
+
+INSERT INTO categoria (nombre) 
+VALUES (
+    'RETROALIMENTACIÓN DE DOCUMENTOS'
+);
+CREATE TABLE consultas (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	id_categoria INT NOT NULL,
+	msj_bot TEXT NULL,
+	msj_persona TEXT NULL,
+	id_persona INT NOT NULL,
+	fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    openai BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (id_categoria) REFERENCES categoria(id),
+	FOREIGN KEY (id_persona) REFERENCES persona(id)
+);

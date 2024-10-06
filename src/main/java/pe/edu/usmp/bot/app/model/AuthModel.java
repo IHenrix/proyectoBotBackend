@@ -4,39 +4,32 @@ import java.util.List;
 
 public class AuthModel {
 
-	private Long co_usu;
-	private String usuario_red;
+	private Long idPersona;
+	private String usuario;
 	private String nombre_completo;
 	private String nombre;
 	private String paterno;
 	private String materno;
-	private String lib_elect;
-	private String zona;
+	private String carrera;
 	private String sexo;
-	private String telf_cel;
-	private String correo;
-	private Long co_modalidad;
-	private String modalidad;
-	// private String co_trab;
-	private String grupo_planilla;
-	private String area;
-	private Long co_area;
-	private List<String> roles;
+	private String codigo;
+	private String telefono;
+	private String email;
 
-	public Long getCo_usu() {
-		return co_usu;
+	public Long getIdPersona() {
+		return idPersona;
 	}
 
-	public void setCo_usu(Long co_usu) {
-		this.co_usu = co_usu;
+	public void setIdPersona(Long idPersona) {
+		this.idPersona = idPersona;
 	}
 
-	public String getUsuario_red() {
-		return usuario_red;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuario_red(String usuario_red) {
-		this.usuario_red = usuario_red;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getNombre_completo() {
@@ -71,20 +64,12 @@ public class AuthModel {
 		this.materno = materno;
 	}
 
-	public String getLib_elect() {
-		return lib_elect;
+	public String getCarrera() {
+		return carrera;
 	}
 
-	public void setLib_elect(String lib_elect) {
-		this.lib_elect = lib_elect;
-	}
-
-	public String getZona() {
-		return zona;
-	}
-
-	public void setZona(String zona) {
-		this.zona = zona;
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
 	}
 
 	public String getSexo() {
@@ -95,68 +80,27 @@ public class AuthModel {
 		this.sexo = sexo;
 	}
 
-	public String getTelf_cel() {
-		return telf_cel;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setTelf_cel(String telf_cel) {
-		this.telf_cel = telf_cel;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public Long getCo_modalidad() {
-		return co_modalidad;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCo_modalidad(Long co_modalidad) {
-		this.co_modalidad = co_modalidad;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-	public String getModalidad() {
-		return modalidad;
-	}
-
-	public void setModalidad(String modalidad) {
-		this.modalidad = modalidad;
-	}
-
-	public String getGrupo_planilla() {
-		return grupo_planilla;
-	}
-
-	public void setGrupo_planilla(String grupo_planilla) {
-		this.grupo_planilla = grupo_planilla;
-	}
-
-	public String getArea() {
-		return area;
-	}
-
-	public void setArea(String area) {
-		this.area = area;
-	}
-
-	public Long getCo_area() {
-		return co_area;
-	}
-
-	public void setCo_area(Long co_area) {
-		this.co_area = co_area;
-	}
-
-	public List<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-
 }

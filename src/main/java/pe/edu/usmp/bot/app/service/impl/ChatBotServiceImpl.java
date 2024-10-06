@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 import org.springframework.web.multipart.MultipartFile;
 import pe.edu.usmp.bot.app.repository.ArchivoRepository;
+import pe.edu.usmp.bot.app.repository.UsuarioRepository;
+import pe.edu.usmp.bot.app.request.ConsultaRequest;
 import pe.edu.usmp.bot.app.request.EnviarMensajeRequest;
 import pe.edu.usmp.bot.app.response.ArchivoDocumentoResponse;
 import pe.edu.usmp.bot.app.response.ChatGptResponse;
@@ -51,6 +53,9 @@ public class ChatBotServiceImpl implements ChatBotService {
 
 	@Autowired
 	private ArchivoRepository archivoRepository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -131,7 +136,9 @@ public class ChatBotServiceImpl implements ChatBotService {
 		// Configuración de la respuesta
 		resp.setCod(1);
 		resp.setMensaje("CHATGPT RESPONDIO SATISFACTORIAMENTE");
-		resp.setModel(beanResponse.getChoices().get(0).getMessage().getContent());
+		String mensajeBot=(beanResponse.getChoices().get(0).getMessage().getContent());
+		usuarioRepository.guardarConsulta(new ConsultaRequest(datos.getCategoria(),datos.getMensaje(),mensajeBot,true));
+		resp.setModel(mensajeBot);
 		return resp;
 	}
 
@@ -187,15 +194,17 @@ public class ChatBotServiceImpl implements ChatBotService {
 				Thread.sleep(1000);
 
 				if (beanResponse != null && beanResponse.getChoices() != null && !beanResponse.getChoices().isEmpty()) {
-					resp.setModel(beanResponse.getChoices().get(0).getMessage().getContent());
+					String mensajeBot=beanResponse.getChoices().get(0).getMessage().getContent();
+					resp.setModel(mensajeBot);
+					usuarioRepository.guardarConsulta(new ConsultaRequest(datos.getCategoria(),datos.getMensaje(),mensajeBot,true));
 				}
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.setCod(1);
 		if (beanResponse != null && beanResponse.getChoices() != null && !beanResponse.getChoices().isEmpty()) {
+			resp.setCod(1);
 			resp.setMensaje("CHATGPT RESPONDIÓ SATISFACTORIAMENTE");
 		} else {
 			resp.setMensaje("No se recibió respuesta válida de ChatGPT.");
@@ -247,9 +256,11 @@ public class ChatBotServiceImpl implements ChatBotService {
 			}
 		}
 		if(!listArchivosEncontrados.isEmpty()){
+			String mensajeBot="Se han encontrado guías relacionadas a su consulta";
 			resp.setCod(Constantes.SUCCESS_COD);
 			resp.setIcon(Constantes.ICON_SUCCESS);
-			resp.setMensaje("Se han encontrado guías relacionadas a su consulta");
+			resp.setMensaje(mensajeBot);
+			usuarioRepository.guardarConsulta(new ConsultaRequest(datos.getCategoria(),datos.getMensaje(),mensajeBot,true));
 			resp.setList(listArchivosEncontrados);
 		}
 		else{

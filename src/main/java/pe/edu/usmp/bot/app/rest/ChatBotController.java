@@ -26,8 +26,9 @@ public class ChatBotController {
 	}
 
 	@RequestMapping(value = "enviarMensajeConArchivo", method = RequestMethod.POST)
-	public ModelResponse<String> enviarMensajeConArchivo(@RequestParam("mensaje")  String mensaje,@RequestParam("prompt") String prompt,@RequestParam("archivo") MultipartFile archivo){
+	public ModelResponse<String> enviarMensajeConArchivo(@RequestParam("categoria")  Integer categoria,  @RequestParam("mensaje")  String mensaje,@RequestParam("prompt") String prompt,@RequestParam("archivo") MultipartFile archivo){
 		EnviarMensajeRequest request= new EnviarMensajeRequest();
+		request.setCategoria(categoria);
 		request.setMensaje(mensaje);
 		request.setPrompt(prompt);
 		return se.enviarMensajeConArchivo(request,archivo);

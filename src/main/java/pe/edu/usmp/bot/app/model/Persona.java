@@ -11,6 +11,7 @@ public class Persona {
 	private String email;
 	private String telefono;
 	private String carrera;
+	private String usuario;
 	public Long getId() {
 		return id;
 	}
@@ -61,6 +62,6 @@ public class Persona {
 	public void setCarrera(String carrera) {
 		this.carrera = carrera;
 	}
-	
-	
+	public String getUsuario() {return usuario;}
+	public void setUsuario(String usuario) {this.usuario = usuario;}
 }

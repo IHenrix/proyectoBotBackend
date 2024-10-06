@@ -26,37 +26,20 @@ public class Auth {
 				.getHeader("Authorization").replace("Bearer ", "").trim();
 
 		Map<String, Object> details = tokenstore.readAccessToken(token).getAdditionalInformation();
-
 		JSONObject jsonObj = new JSONObject(details);
-
 		AuthModel usuario = new AuthModel();
-		usuario.setCo_usu(jsonObj.getLong("co_usu"));
-		usuario.setUsuario_red(getOrNull(jsonObj, "usuario_red"));
+		usuario.setIdPersona(jsonObj.getLong("idPersona"));
+		usuario.setUsuario(getOrNull(jsonObj, "usuario"));
 		usuario.setNombre_completo(getOrNull(jsonObj, "nombre_completo"));
 		usuario.setNombre(getOrNull(jsonObj, "nombre"));
 		usuario.setPaterno(getOrNull(jsonObj, "paterno"));
 		usuario.setMaterno(getOrNull(jsonObj, "materno"));
-		usuario.setLib_elect(getOrNull(jsonObj, "lib_elect"));
-		usuario.setZona(getOrNull(jsonObj, "zona"));
+		usuario.setCarrera(getOrNull(jsonObj, "carrera"));
 		usuario.setSexo(getOrNull(jsonObj, "sexo"));
-		usuario.setTelf_cel(getOrNull(jsonObj, "telf_cel"));
-		usuario.setCorreo(getOrNull(jsonObj, "correo"));
-		usuario.setCo_modalidad(jsonObj.getLong("co_modalidad"));
-		usuario.setModalidad(getOrNull(jsonObj, "modalidad"));
-		// usuario.setCo_trab(getOrNull(jsonObj, "co_trab"));
-		usuario.setGrupo_planilla(getOrNull(jsonObj, "grupo_planilla"));
-		usuario.setArea(getOrNull(jsonObj, "area"));
-		usuario.setCo_area(jsonObj.getLong("co_area"));
-		JSONArray roles = new JSONArray(getOrNull(jsonObj, "authorities"));
-		if (roles.length() > 0) {
-			List<String> list = new ArrayList<String>();
-			for (int i = 0; i < roles.length(); i++) {
-				list.add(roles.optString(i));
-			}
-			usuario.setRoles(list);
-		}
+		usuario.setCodigo(getOrNull(jsonObj, "codigo"));
+		usuario.setTelefono(getOrNull(jsonObj, "telefono"));
+		usuario.setEmail(getOrNull(jsonObj, "email"));
 		return usuario;
-
 	}
 
 	private static String getOrNull(JSONObject jsonObj, String key) {
@@ -71,31 +54,9 @@ public class Auth {
 		return details;
 	}
 
-	public Long co_usu() {
-		return usuario().getCo_usu();
+	public Long IdPersona() {
+		return usuario().getIdPersona();
 	}
 
-	public String zona() {
-		return usuario().getZona();
-	}
 
-	public String usuario_red() {
-		return usuario().getUsuario_red();
-	}
-
-	public String nombre_completo() {
-		return usuario().getNombre_completo();
-	}
-
-	public String lib_elect() {
-		return usuario().getLib_elect();
-	}
-
-	public Long co_area() {
-		return usuario().getCo_area();
-	}
-
-	public List<String> roles() {
-		return usuario().getRoles();
-	}
 }
