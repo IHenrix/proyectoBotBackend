@@ -1,0 +1,2 @@
+gcloud app logs tail -s default
+gcloud app deploy
