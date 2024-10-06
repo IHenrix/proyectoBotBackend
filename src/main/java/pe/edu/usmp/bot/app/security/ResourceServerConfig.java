@@ -28,7 +28,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
            .oauth2Login()
            .and().cors().configurationSource(corsConfigurationSource());*/
 		http.authorizeRequests().
-		antMatchers("/oauth/**").permitAll()
+		antMatchers("/oauth/**","/_ah/start", "/_ah/health").permitAll()
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 	}
