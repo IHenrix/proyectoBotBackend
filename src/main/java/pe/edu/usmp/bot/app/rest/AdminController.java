@@ -95,4 +95,12 @@ public class AdminController {
 	public MsgResponse crearUsuariosMasivo(@RequestBody CreaModiUsuarioMasivoRequest datos) {
 		return se.crearUsuariosMasivo(datos);
 	}
+	@RequestMapping(value = "listarEstudiantes", method = RequestMethod.GET)
+	public List<CodNombreResponse> listarEstudiantes() {
+		return se.listarEstudiantes();
+	}
+	@RequestMapping(value = "listarCategoria", method = RequestMethod.GET)
+	public List<CodNombreResponse> listarCategoria() {
+		return se.listarCategoria();
+	}
 }

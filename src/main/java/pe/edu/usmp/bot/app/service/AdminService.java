@@ -19,6 +19,9 @@ public interface AdminService {
 
     List<CodNombreResponse> listaCarrera();
     
-    public MsgResponse crearUsuariosMasivo(CreaModiUsuarioMasivoRequest datos);
-    
+    MsgResponse crearUsuariosMasivo(CreaModiUsuarioMasivoRequest datos);
+
+    List<CodNombreResponse> listarEstudiantes();
+
+    List<CodNombreResponse> listarCategoria();
 }

@@ -194,4 +194,21 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
         }
     }
 
+	@Override
+	public List<CodNombreResponse> listarEstudiantes() {
+			return jdbcTemplate.query("SELECT p.id cod,\n" +
+					"       CONCAT(p.apellido_paterno, ' ', p.apellido_materno,' ',p.nombre) AS nombre\n" +
+					"FROM persona p\n" +
+					"         INNER JOIN usuario u ON p.id_usuario=u.id\n" +
+					"         INNER JOIN usuario_rol ur ON u.id=ur.usuario_id\n" +
+					"WHERE ur.rol_id=1\n" +
+					"ORDER BY nombre ASC", BeanPropertyRowMapper.newInstance(CodNombreResponse.class));
+
+	}
+
+	@Override
+	public List<CodNombreResponse> listarCategoria() {
+		return jdbcTemplate.query("SELECT id cod,nombre FROM categoria ORDER BY id asc", BeanPropertyRowMapper.newInstance(CodNombreResponse.class));
+	}
+
 }

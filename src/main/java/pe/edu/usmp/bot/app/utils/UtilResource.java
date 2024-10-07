@@ -1,6 +1,7 @@
 package pe.edu.usmp.bot.app.utils;
 
-import java.util.Optional;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class UtilResource {
 
@@ -33,4 +34,24 @@ public class UtilResource {
 		return Constantes.CONTRASENA_DEFAULT;
 
     }
+    public static List<Map<String, Object>> convertirDtoAMap(List<?> listaDto) {
+        List<Map<String, Object>> listaMapas = new ArrayList<>();
+
+        for (Object dto : listaDto) {
+            Map<String, Object> mapa = new HashMap<>();
+            Field[] campos = dto.getClass().getDeclaredFields();
+            for (Field campo : campos) {
+                campo.setAccessible(true);
+                try {
+                    mapa.put(campo.getName(), campo.get(dto));
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Error al acceder al campo: " + campo.getName(), e);
+                }
+            }
+            listaMapas.add(mapa);
+        }
+
+        return listaMapas;
+    }
+
 }

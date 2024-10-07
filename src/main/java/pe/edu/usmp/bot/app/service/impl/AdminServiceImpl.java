@@ -144,4 +144,14 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return resp;
 	}
+
+	@Override
+	public List<CodNombreResponse> listarEstudiantes() {
+		return repo.listarEstudiantes();
+	}
+
+	@Override
+	public List<CodNombreResponse> listarCategoria() {
+		return repo.listarCategoria();
+	}
 }

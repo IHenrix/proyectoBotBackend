@@ -57,6 +57,8 @@ public class Auth {
 	public Long IdPersona() {
 		return usuario().getIdPersona();
 	}
-
+	public String nombreCompleto() {
+		return usuario().getNombre()+" "+usuario().getPaterno()+" "+usuario().getMaterno();
+	}
 
 }
