@@ -35,7 +35,7 @@
 				<text><![CDATA[REPORTE DE SUPERVISIÓN DE CONSULTAS A ESTUDIANTES]]></text>
 			</staticText>
 			<image scaleImage="RetainShape" onErrorType="Icon">
-				<reportElement x="10" y="-10" width="101" height="48" uuid="7fe0fb0b-242d-4425-b2be-9557204054bc"/>
+				<reportElement x="6" y="-5" width="91" height="48" uuid="7fe0fb0b-242d-4425-b2be-9557204054bc"/>
 				<imageExpression><![CDATA[new ByteArrayInputStream(Base64.getDecoder().decode($P{logo}.getBytes()))]]></imageExpression>
 			</image>
 			<staticText>
