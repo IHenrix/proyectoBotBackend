@@ -104,12 +104,12 @@ public class SupervisionConsultaServiceImpl implements SupervisionConsultaServic
     public byte[] exportarSupervisionConsultaExcel(ListaSupervisionConsultasRequest datos)  throws Exception {
         List<ListaConsultasDetalleResponse> lista = repo.listaConsultaDetalle(datos);
         HashMap<String, Object> mapParametros = new HashMap<>();
-        /*String logoBase64 = Base64.getEncoder()
-                .encodeToString(IOUtils.toByteArray(getClass().getResourceAsStream("/static/images/logoMinisterio_largo.png")));*/
+        String logoBase64 = Base64.getEncoder()
+                .encodeToString(IOUtils.toByteArray(getClass().getResourceAsStream("/static/images/logo.png")));
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String fechaFormateada = formatoFecha.format(fechaActual);
-       // mapParametros.put("logo", logoBase64);
+        mapParametros.put("logo", logoBase64);
         mapParametros.put("fechaActual", fechaFormateada+" hrs");
         mapParametros.put("usuario", auth.nombreCompleto());
         mapParametros.put("categoria",datos.getCategoriaDescripcion());

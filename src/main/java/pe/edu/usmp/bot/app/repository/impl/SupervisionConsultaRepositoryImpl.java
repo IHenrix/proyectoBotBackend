@@ -77,7 +77,6 @@ public class SupervisionConsultaRepositoryImpl  extends JdbcDaoSupport implement
             params.add(datos.getUsuario());
         }
         sql.append(" ORDER BY fecha,pregunta ASC");
-        System.out.println(sql.toString());
         return jdbcTemplate.query(sql.toString(), params.toArray(),
                 BeanPropertyRowMapper.newInstance(ListaConsultasDetalleResponse.class));
     }
