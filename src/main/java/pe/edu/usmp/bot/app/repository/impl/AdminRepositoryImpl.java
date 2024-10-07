@@ -205,7 +205,6 @@ public class AdminRepositoryImpl extends JdbcDaoSupport implements AdminReposito
 					"ORDER BY nombre ASC", BeanPropertyRowMapper.newInstance(CodNombreResponse.class));
 
 	}
-
 	@Override
 	public List<CodNombreResponse> listarCategoria() {
 		return jdbcTemplate.query("SELECT id cod,nombre FROM categoria ORDER BY id asc", BeanPropertyRowMapper.newInstance(CodNombreResponse.class));

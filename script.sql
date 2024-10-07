@@ -119,7 +119,7 @@ VALUES (
 
 INSERT INTO categoria (nombre) 
 VALUES (
-    'GUIÁS ACADEMICAS'
+    'GUIÁS ACADÉMICAS'
 );
 
 INSERT INTO categoria (nombre) 
