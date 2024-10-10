@@ -36,6 +36,7 @@ public class UtilResource {
     }
     public static List<Map<String, Object>> convertirDtoAMap(List<?> listaDto) {
         List<Map<String, Object>> listaMapas = new ArrayList<>();
+        int contador = 1;
 
         for (Object dto : listaDto) {
             Map<String, Object> mapa = new HashMap<>();
@@ -48,6 +49,7 @@ public class UtilResource {
                     throw new RuntimeException("Error al acceder al campo: " + campo.getName(), e);
                 }
             }
+            mapa.put("numero", contador++);
             listaMapas.add(mapa);
         }
 

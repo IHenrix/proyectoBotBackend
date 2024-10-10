@@ -142,5 +142,3 @@ CREATE TABLE consultas (
 	FOREIGN KEY (id_categoria) REFERENCES categoria(id),
 	FOREIGN KEY (id_persona) REFERENCES persona(id)
 );
-
-
