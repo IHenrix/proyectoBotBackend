@@ -106,6 +106,30 @@ public class AccesoInformacionServiceImpl implements AccesoInformacionService {
         }
         return resp;
     }
+    public static String convertirListaATexto(List<TopUsuariosConsultasCategoriasResponse> lista) {
+        StringBuilder sb = new StringBuilder();
+        for (TopUsuariosConsultasCategoriasResponse item : lista) {
+            sb.append("Categoría: ").append(item.getCategoria()).append("\n");
+            sb.append("Consultas: ").append(item.getConsultas()).append("\n");
+            sb.append("\n"); // Agrega un salto de línea entre cada elemento
+        }
+        return sb.toString();
+    }
+
+    public List<TopUsuariosConsultasResponse> listaTopUsuariosCategorias(List<TopUsuariosConsultasResponse> data){
+        for (TopUsuariosConsultasResponse item : data) {
+            if(!item.getLstCategoria().isEmpty()){
+                StringBuilder sb = new StringBuilder();
+                for (TopUsuariosConsultasCategoriasResponse item1 : item.getLstCategoria()) {
+                    sb.append("Categoría: ").append(item1.getCategoria()).append("\n");
+                    sb.append("Consultas: ").append(item1.getConsultas()).append("\n");
+                    sb.append("\n");
+                }
+                item.setCategorias(sb.toString());
+            }
+        }
+        return data;
+    }
 
     @Override
     public String exportarAccesoInformacionPDF(AccesoInformacionRequest datos) throws Exception {
@@ -143,8 +167,8 @@ public class AccesoInformacionServiceImpl implements AccesoInformacionService {
                 archivoReporte="ReporteConsultaPorMes";
                 break;
             case "4":
-                listDataMap = UtilResource.convertirDtoAMap(repo.topUsuariosConsultas(datos));
-                archivoReporte="";
+                listDataMap = UtilResource.convertirDtoAMap(listaTopUsuariosCategorias(repo.topUsuariosConsultas(datos)));
+                archivoReporte="UsuariosConMasConsultas";
                 break;
         }
         InputStream jrxmlStream = new ClassPathResource("/static/"+archivoReporte+".jrxml").getInputStream();
@@ -199,8 +223,8 @@ public class AccesoInformacionServiceImpl implements AccesoInformacionService {
                 archivoReporte="ReporteConsultaPorMes";
                 break;
             case "4":
-                listDataMap = UtilResource.convertirDtoAMap(repo.topUsuariosConsultas(datos));
-                archivoReporte="";
+                listDataMap = UtilResource.convertirDtoAMap(listaTopUsuariosCategorias(repo.topUsuariosConsultas(datos)));
+                archivoReporte="UsuariosConMasConsultas";
                 break;
         }
         InputStream jrxmlStream = new ClassPathResource("/static/"+archivoReporte+".jrxml").getInputStream();

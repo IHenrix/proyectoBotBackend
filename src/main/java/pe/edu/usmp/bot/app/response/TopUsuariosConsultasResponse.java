@@ -7,6 +7,7 @@ public class TopUsuariosConsultasResponse {
     private String nombre;
     private Integer consultas;
     private List<TopUsuariosConsultasCategoriasResponse> lstCategoria;
+    private String categorias;
 
     public Long getId() {
         return id;
@@ -38,5 +39,13 @@ public class TopUsuariosConsultasResponse {
 
     public void setLstCategoria(List<TopUsuariosConsultasCategoriasResponse> lstCategoria) {
         this.lstCategoria = lstCategoria;
+    }
+
+    public String getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(String categorias) {
+        this.categorias = categorias;
     }
 }

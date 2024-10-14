@@ -3,11 +3,16 @@ package pe.edu.usmp.bot.app.service.impl;
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pe.edu.usmp.bot.app.request.AzureRequest;
 import pe.edu.usmp.bot.app.response.ModelResponse;
 import pe.edu.usmp.bot.app.service.AzureService;
 import org.springframework.beans.factory.annotation.Value;
 import com.microsoft.cognitiveservices.speech.*;
 import pe.edu.usmp.bot.app.utils.Constantes;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.CountDownLatch;
 
 import java.io.File;
@@ -70,4 +75,36 @@ public class AzureServiceImpl  implements AzureService {
 
         return resp;
     }
+
+    @Override
+    public byte[] textToSpeak(AzureRequest datos) {
+        byte[] audio =null;
+        File tempFile = null;
+        try {
+            SpeechConfig speechConfig = SpeechConfig.fromSubscription(speechKey, speechRegion);
+            speechConfig.setSpeechSynthesisVoiceName("es-ES-HelenaNeural");
+            tempFile = File.createTempFile("speech_output", ".wav");
+            AudioConfig audioConfig = AudioConfig.fromWavFileOutput(tempFile.getAbsolutePath());
+            SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
+            SpeechSynthesisResult result = synthesizer.SpeakText(datos.getMensaje());
+            if (result.getReason() == ResultReason.SynthesizingAudioCompleted) {
+                audio=readFileToByteArray(tempFile);
+            } else {
+                throw new Exception("Error al sintetizar el audio: ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (tempFile != null && tempFile.exists()) {
+                tempFile.delete();
+            }
+        }
+        return audio;
+    }
+    private byte[] readFileToByteArray(File file) throws IOException {
+        try (InputStream inputStream = new FileInputStream(file)) {
+            return inputStream.readAllBytes();
+        }
+    }
+
 }

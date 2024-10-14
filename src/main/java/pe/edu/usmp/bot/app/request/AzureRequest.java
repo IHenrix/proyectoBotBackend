@@ -1,6 +1,6 @@
 package pe.edu.usmp.bot.app.request;
 
-public class SpeakToTextRequest {
+public class AzureRequest {
     private String mensaje;
 
     public String getMensaje() {

@@ -1,11 +1,13 @@
 package pe.edu.usmp.bot.app.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pe.edu.usmp.bot.app.request.AzureRequest;
 import pe.edu.usmp.bot.app.response.ModelResponse;
 import pe.edu.usmp.bot.app.service.AzureService;
 
@@ -19,5 +21,15 @@ public class AzureController {
     @RequestMapping(value = "speakToText", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ModelResponse<String> speakToText(@RequestParam("audio") MultipartFile audio) throws Exception{
         return se.speakToText(audio);
+    }
+
+    @RequestMapping(value = "textToSpeak", method = RequestMethod.POST)
+
+    public ResponseEntity<byte[]> textToSpeak(@RequestBody AzureRequest datos) {
+        byte[] audioBytes = se.textToSpeak(datos);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("audio/wav"));
+        headers.setContentLength(audioBytes.length);
+        return new ResponseEntity<>(audioBytes, headers, HttpStatus.OK);
     }
 }
