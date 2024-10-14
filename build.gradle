@@ -60,8 +60,8 @@ dependencies {
 	implementation group: 'org.olap4j', name: 'olap4j', version: '1.2.0'
 	//LIBRERIAS PARA CORREO
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.1.1.RELEASE'
-	implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: '1.41.1' , ext: "jar"
-
+	//implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: '1.41.1' , ext: "jar"
+	implementation fileTree('lib')
 	//LIBRERIAS PARA AUTENTICACION CON MICROSOFT
 	//implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
