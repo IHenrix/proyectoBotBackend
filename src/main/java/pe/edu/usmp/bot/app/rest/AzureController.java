@@ -18,15 +18,28 @@ public class AzureController {
     @Autowired
     private AzureService se;
 
-    @RequestMapping(value = "speakToText", method = RequestMethod.POST, consumes = "multipart/form-data")
+    /*@RequestMapping(value = "speakToText", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ModelResponse<String> speakToText(@RequestParam("audio") MultipartFile audio) throws Exception{
         return se.speakToText(audio);
-    }
+    }*/
 
-    @RequestMapping(value = "textToSpeak", method = RequestMethod.POST)
-
+    /*@RequestMapping(value = "textToSpeak", method = RequestMethod.POST)
     public ResponseEntity<byte[]> textToSpeak(@RequestBody AzureRequest datos) {
         byte[] audioBytes = se.textToSpeak(datos);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("audio/wav"));
+        headers.setContentLength(audioBytes.length);
+        return new ResponseEntity<>(audioBytes, headers, HttpStatus.OK);
+    }*/
+
+    @RequestMapping(value = "speakToTextApi", method = RequestMethod.POST, consumes = "multipart/form-data")
+    public ModelResponse<String> speakToTextApi(@RequestParam("audio") MultipartFile audio){
+        return se.speakToTextApi(audio);
+    }
+
+    @RequestMapping(value = "textToSpeakApi", method = RequestMethod.POST)
+    public ResponseEntity<byte[]> textToSpeakApi(@RequestBody AzureRequest datos) {
+        byte[] audioBytes = se.textToSpeakApi(datos);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("audio/wav"));
         headers.setContentLength(audioBytes.length);

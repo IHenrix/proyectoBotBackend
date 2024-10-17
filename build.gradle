@@ -17,16 +17,6 @@ repositories {
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
 }
-/*jar {
-	enabled = true
-	manifest {
-		attributes(
-				'Main-Class': 'pe.edu.usmp.bot.app.MsEpicsBotApplication'
-		)
-	}
-	archiveClassifier = ''
-}*/
-
 
 dependencies {
 	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.4.RELEASE'
@@ -61,7 +51,7 @@ dependencies {
 	//LIBRERIAS PARA CORREO
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.1.1.RELEASE'
 	//implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: '1.41.1' , ext: "jar"
-	implementation fileTree('lib')
+	//implementation fileTree('lib')
 	//LIBRERIAS PARA AUTENTICACION CON MICROSOFT
 	//implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'

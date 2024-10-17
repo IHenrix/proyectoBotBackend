@@ -6,6 +6,9 @@ import pe.edu.usmp.bot.app.response.ModelResponse;
 
 public interface AzureService {
 
-    ModelResponse<String> speakToText(MultipartFile audio)  throws Exception;
-    byte[] textToSpeak(AzureRequest datos);
+//    ModelResponse<String> speakToText(MultipartFile audio)  throws Exception;
+//    byte[] textToSpeak(AzureRequest datos);
+    ModelResponse<String> speakToTextApi(MultipartFile audio);
+    byte[] textToSpeakApi(AzureRequest datos);
+
 }
